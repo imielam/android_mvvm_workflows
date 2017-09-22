@@ -2,9 +2,10 @@ apply plugin: 'kotlin'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'junit:junit:4.12'
     compile project(path: ':domain')
+
+    testCompile "junit:junit:$junit_version"
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = rootProject.ext.java_version
+targetCompatibility = rootProject.ext.java_version
