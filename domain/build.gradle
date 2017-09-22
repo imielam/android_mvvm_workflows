@@ -3,7 +3,10 @@ apply plugin: 'kotlin'
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    compile "com.google.dagger:dagger:$dagger_version"
+
     testCompile "junit:junit:$junit_version"
+    testCompile 'org.mockito:mockito-all:1.9.5'
 }
 
 sourceCompatibility = rootProject.ext.java_version

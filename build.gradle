@@ -27,6 +27,8 @@ ext {
     min_sdk_version = '21'
     build_tools_version = '26.0.1'
     espresso_version = '2.2.2'
+
+    dagger_version = '2.11'
 }
 
 allprojects {

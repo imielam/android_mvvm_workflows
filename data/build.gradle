@@ -30,6 +30,8 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$support_version"
 
+    compile "com.google.dagger:dagger:$dagger_version"
+
     testCompile "junit:junit:$junit_version"
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
