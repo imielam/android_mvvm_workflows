@@ -7,14 +7,16 @@ import org.junit.Test
 
 class ModuleDependencyTest {
     @Test
-    fun testDependency_baseUI() {
+    fun testDependency_internal() {
         val testClassApp = TestClassApp()
+    }
+    @Test
+    fun testDependency_baseUI() {
         val testClassUI = TestClassUI()
     }
 
     @Test
     fun testDependency_data() {
-        val testClassApp = TestClassApp()
         val testClassData = TestClassData()
     }
 }
