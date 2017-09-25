@@ -4,6 +4,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile "com.google.dagger:dagger:$dagger_version"
+    compile "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
     testCompile "junit:junit:$junit_version"
     testCompile 'org.mockito:mockito-all:1.9.5'
