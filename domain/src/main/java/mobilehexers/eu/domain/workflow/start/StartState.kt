@@ -1,9 +1,12 @@
-package mobilehexers.eu.domain.workflow
+package mobilehexers.eu.domain.workflow.start
+
+import mobilehexers.eu.domain.workflow.base.State
+import javax.inject.Inject
 
 /**
  * Created by mimiela on 9/23/17.
  */
-class StartState : State {
+class StartState : State{
     var currentState = StartEnum.INITIALIZED
         private set
 
@@ -11,7 +14,7 @@ class StartState : State {
     override fun next() {
         when (currentState) {
             StartEnum.INITIALIZED -> currentState = StartEnum.ENDED
-            //TODO: Add logging for else
+        //TODO: Add logging for else
         }
     }
 
