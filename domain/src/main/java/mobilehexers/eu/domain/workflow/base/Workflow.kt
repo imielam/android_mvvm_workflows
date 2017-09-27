@@ -10,7 +10,7 @@ import javax.inject.Singleton
 /**
  * Created by mimiela on 9/22/17.
  */
-open class Workflow constructor(private val state: State) {
+abstract class Workflow constructor(private val state: State) {
     private val processor = PublishProcessor.create<State>()!!
 
     fun next() {

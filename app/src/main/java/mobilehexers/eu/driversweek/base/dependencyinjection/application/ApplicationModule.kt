@@ -13,22 +13,6 @@ import javax.inject.Singleton
  */
 
 @Module class ApplicationModule {
-    @Provides
-    @Singleton
-    @Named("main")
-    fun provideMainWorkflow(): Workflow = Workflow(MainState())
-
-    @Provides
-    @Singleton
-    @Named("start")
-    fun provideStartWorkflow(): Workflow = Workflow(StartState())
-
-
-    @Provides
-    fun provideStartState(): StartState = StartState()
-
-    @Provides
-    fun provideMainState(): MainState = MainState()
 
 }
 //

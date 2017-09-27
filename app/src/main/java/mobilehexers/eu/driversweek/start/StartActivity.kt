@@ -13,14 +13,11 @@ import mobilehexers.eu.domain.workflow.start.StartWorkflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.main.MainActivity
 import javax.inject.Inject
-import javax.inject.Named
 
 class StartActivity : AppCompatActivity() {
     @Inject
-    @Named("start")
     lateinit var workflow: StartWorkflow
     private var disposable: Disposable? = null
-    //    private val component by lazy { baseApplication.component.plus(StartModule(this)) }
     private val component by lazy { baseApplication.component }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,5 +39,6 @@ class StartActivity : AppCompatActivity() {
     private fun startMainActivity() {
         val newIntent = Intent(baseContext, MainActivity::class.java)
         startActivity(newIntent)
+        finish()
     }
 }

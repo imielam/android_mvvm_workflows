@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var workflow: MainWorkflow
     private var disposable: Disposable? = null
-    //    private val component by lazy { baseApplication.component.plus(MainModule(this)) }
     private val component by lazy { baseApplication.component }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun switchFragmentToMain() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.base_container, MainFragment())
+        fragmentTransaction.replace(R.id.base_container, MainFragment.newInstance())
 //        if (addToBackStack) {
 //            fragmentTransaction.addToBackStack(tag)
 //        }

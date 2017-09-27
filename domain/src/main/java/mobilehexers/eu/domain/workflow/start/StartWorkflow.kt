@@ -6,5 +6,5 @@ import javax.inject.Inject
 /**
  * Created by mimiela on 26.09.17.
  */
-class StartWorkflow @Inject constructor(state: StartState) : Workflow(state) {
+class StartWorkflow @Inject constructor() : Workflow(StartState()) {
 }
