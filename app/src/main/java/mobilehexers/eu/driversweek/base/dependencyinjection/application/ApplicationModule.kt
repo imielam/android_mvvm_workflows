@@ -2,18 +2,30 @@ package com.mobilehexers.driversweek.base.dependencyinjection.module
 
 import dagger.Module
 import dagger.Provides
-import mobilehexers.eu.domain.workflow.base.Workflow
-import mobilehexers.eu.domain.workflow.main.MainState
-import mobilehexers.eu.domain.workflow.start.StartState
-import javax.inject.Named
+import mobilehexers.eu.domain.rx.SchedulerProvider
+import mobilehexers.eu.domain.workflow.main.MainWorkflow
+import mobilehexers.eu.domain.workflow.start.StartWorkflow
+import mobilehexers.eu.driversweek.base.rx.AndroidSchedulerProvider
 import javax.inject.Singleton
 
 /**
  * Created by maciej.imiela on 25.12.16.
  */
 
-@Module class ApplicationModule {
+@Module
+class ApplicationModule {
 
+    @Provides
+    @Singleton
+    internal fun provideSchedulerProvider(): SchedulerProvider = AndroidSchedulerProvider()
+
+//    @Provides
+//    @Singleton
+//    internal fun provideStartWorkflow() = StartWorkflow(AndroidSchedulerProvider())
+//
+//    @Provides
+//    @Singleton
+//    internal fun provideMainWorkflow() = MainWorkflow(AndroidSchedulerProvider())
 }
 //
 //    @Provides

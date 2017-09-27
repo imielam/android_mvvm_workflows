@@ -2,7 +2,7 @@
  * Copyright (c) 2017 MobileHexers.com ALL RIGHTS RESERVED
  */
 
-package com.mobilehexers.driversweek.base.extensions
+package mobilehexers.eu.driversweek.base.extensions
 
 import android.app.Activity
 import mobilehexers.eu.driversweek.base.BaseApplication
@@ -13,3 +13,5 @@ import mobilehexers.eu.driversweek.base.BaseApplication
 
 val Activity.baseApplication: BaseApplication
     get() = application as BaseApplication
+//val Any.logTag: String
+//    get() = javaClass.simpleName

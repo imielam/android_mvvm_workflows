@@ -3,6 +3,8 @@ package com.mobilehexers.driversweek.base.dependencyinjection.component
 import android.support.v7.app.AppCompatActivity
 import com.mobilehexers.driversweek.base.dependencyinjection.module.ApplicationModule
 import dagger.Component
+import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.driversweek.start.StartActivity
 import javax.inject.Singleton
 
 /**
@@ -12,7 +14,8 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(ApplicationModule::class))
 interface ApplicationComponent {
 
-    fun inject(activity: AppCompatActivity)
+    fun inject(activity: MainActivity)
+    fun inject(activity: StartActivity)
 
     //    fun inject(app: Application)
 //    fun plus(startModule: StartModule): StartComponent

@@ -2,7 +2,7 @@ package mobilehexers.eu.driversweek.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.mobilehexers.driversweek.base.extensions.baseApplication
+import android.util.Log
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
@@ -10,6 +10,8 @@ import mobilehexers.eu.domain.workflow.main.MainEnum
 import mobilehexers.eu.domain.workflow.main.MainState
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.driversweek.R
+import mobilehexers.eu.driversweek.base.extensions.baseApplication
+import mobilehexers.eu.driversweek.extensions.logTag
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -19,10 +21,11 @@ class MainActivity : AppCompatActivity() {
     private val component by lazy { baseApplication.component }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(logTag, "onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         component.inject(this)
-        if (savedInstanceState != null) {
+        if (savedInstanceState == null) {
             disposable = workflow.init(Consumer { state -> handleStateChange(state as MainState) }, Consumer { }, Action { disposable?.dispose() })
             workflow.next()
         }

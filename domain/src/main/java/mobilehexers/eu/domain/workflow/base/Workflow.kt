@@ -4,13 +4,12 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
 import io.reactivex.processors.PublishProcessor
-import javax.inject.Inject
-import javax.inject.Singleton
+import mobilehexers.eu.domain.rx.SchedulerProvider
 
 /**
  * Created by mimiela on 9/22/17.
  */
-abstract class Workflow constructor(private val state: State) {
+abstract class Workflow(private val state: State, private val schedulerProvider: SchedulerProvider) {
     private val processor = PublishProcessor.create<State>()!!
 
     fun next() {
@@ -18,6 +17,10 @@ abstract class Workflow constructor(private val state: State) {
         processor.onNext(state)
     }
 
-    fun init(next: Consumer<State>, error: Consumer<Throwable>, complete: Action): Disposable = processor.subscribe(next, error, complete)
+    fun init(next: Consumer<State>, error: Consumer<Throwable>, complete: Action): Disposable =
+            processor.
+                    subscribeOn(schedulerProvider.computationThread).
+                    observeOn(schedulerProvider.mainThread).
+                    subscribe(next, error, complete)
 
 }
