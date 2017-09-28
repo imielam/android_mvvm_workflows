@@ -6,13 +6,15 @@ import mobilehexers.eu.domain.rx.SchedulerProvider
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
 import mobilehexers.eu.driversweek.base.rx.AndroidSchedulerProvider
+import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.driversweek.main.MainActivitySubcomponent
 import javax.inject.Singleton
 
 /**
  * Created by maciej.imiela on 25.12.16.
  */
 
-@Module
+@Module/*(subcomponents = arrayOf(MainActivitySubcomponent::class))*/
 class ApplicationModule {
 
     @Provides

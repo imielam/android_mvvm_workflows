@@ -29,8 +29,13 @@ class StartActivity : AppCompatActivity() {
         component.inject(this)
         if (savedInstanceState == null) {
             disposable = workflow.init(Consumer { state -> handleStateChange(state as StartState) }, Consumer { }, Action { disposable?.dispose() })
-            workflow.next()
         }
+    }
+
+    override fun onResume() {
+        Log.d(logTag, "onResume")
+        super.onResume()
+        workflow.next()
     }
 
     private fun handleStateChange(state: StartState) {
