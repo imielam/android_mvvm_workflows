@@ -1,8 +1,10 @@
 package com.mobilehexers.driversweek.base.dependencyinjection.component
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Context
 import com.mobilehexers.driversweek.base.dependencyinjection.module.ApplicationModule
 import dagger.Component
+import mobilehexers.eu.domain.workflow.main.MainWorkflow
+import mobilehexers.eu.domain.workflow.start.StartWorkflow
 import mobilehexers.eu.driversweek.main.MainActivity
 import mobilehexers.eu.driversweek.start.StartActivity
 import javax.inject.Singleton
@@ -30,9 +32,9 @@ interface ApplicationComponent {
 //    // void inject(MyFragment fragment);
 //    // void inject(MyService service);
 //
-//    val context: Context
-//    val mainWorkflow: Workflow
-//    val startWorkflow: Workflow
+    val context: Context
+    val mainWorkflow: MainWorkflow
+    val startWorkflow: StartWorkflow
 //    val networkManager: NetworkManager
 //    val responseHandler: ResponseHandler
 //    val stackManager: StackManager

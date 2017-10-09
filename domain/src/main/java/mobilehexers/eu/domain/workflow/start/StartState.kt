@@ -18,4 +18,8 @@ class StartState : State{
         }
     }
 
+    override fun toString(): String {
+        return "StartState(currentState=${currentState.name})"
+    }
+
 }

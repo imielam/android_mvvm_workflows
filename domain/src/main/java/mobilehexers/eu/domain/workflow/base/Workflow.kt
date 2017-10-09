@@ -23,4 +23,9 @@ abstract class Workflow(private val state: State, private val schedulerProvider:
                     observeOn(schedulerProvider.mainThread).
                     subscribe(next, error, complete)
 
+    override fun toString(): String {
+        return "Workflow(state=$state)"
+    }
+
+
 }

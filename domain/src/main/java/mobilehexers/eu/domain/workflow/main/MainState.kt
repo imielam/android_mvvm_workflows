@@ -16,4 +16,8 @@ class MainState : State {
             //TODO: Add logging for else
         }
     }
+
+    override fun toString(): String {
+        return "MainState(currentState=${currentState.name})"
+    }
 }

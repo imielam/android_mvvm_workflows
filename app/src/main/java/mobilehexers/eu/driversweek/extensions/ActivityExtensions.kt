@@ -5,7 +5,9 @@
 package mobilehexers.eu.driversweek.base.extensions
 
 import android.app.Activity
-import mobilehexers.eu.driversweek.base.BaseApplication
+import android.support.v4.app.Fragment
+import mobilehexers.eu.driversweek.base.android.BaseActivity
+import mobilehexers.eu.driversweek.base.android.BaseApplication
 
 /**
  * Created by maciej.imiela on 20.07.2017.
@@ -13,5 +15,7 @@ import mobilehexers.eu.driversweek.base.BaseApplication
 
 val Activity.baseApplication: BaseApplication
     get() = application as BaseApplication
+val Fragment.baseActivity: BaseActivity
+    get() = activity as BaseActivity
 //val Any.logTag: String
 //    get() = javaClass.simpleName
