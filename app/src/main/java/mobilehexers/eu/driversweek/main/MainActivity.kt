@@ -2,8 +2,6 @@ package mobilehexers.eu.driversweek.main
 
 import android.os.Bundle
 import android.util.Log
-import com.mobilehexers.driversweek.base.dependencyinjection.component.DaggerMainComponent
-import com.mobilehexers.driversweek.base.dependencyinjection.component.MainComponent
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
@@ -20,13 +18,13 @@ class MainActivity : BaseActivity() {
     @Inject
     lateinit var workflow: MainWorkflow
     private var disposable: Disposable? = null
-    private val applicationComponent by lazy { baseApplication.component }
-    val activityComponent: MainComponent by lazy { DaggerMainComponent.builder().applicationComponent(applicationComponent).build() }
+    private val applicationComponent by lazy { baseApplication.applicationComponent }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
+        baseApplication.plusMainComponent()
         applicationComponent.inject(this)
         if (savedInstanceState == null) {
             disposable = workflow.init(Consumer { state -> handleStateChange(state as MainState) }, Consumer { }, Action { disposable?.dispose() })
@@ -37,6 +35,11 @@ class MainActivity : BaseActivity() {
         super.onResume()
         Log.d(logTag, "onResume")
         workflow.next()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        baseApplication.clearMainComponent()
     }
 
     private fun handleStateChange(state: MainState) {

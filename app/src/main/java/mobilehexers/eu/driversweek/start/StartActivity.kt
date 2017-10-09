@@ -24,7 +24,7 @@ class StartActivity : AppCompatActivity() {
     @Inject
     lateinit var workflow: StartWorkflow
     private var disposable: Disposable? = null
-    private val component by lazy { baseApplication.component }
+    private val component by lazy { baseApplication.applicationComponent }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate")

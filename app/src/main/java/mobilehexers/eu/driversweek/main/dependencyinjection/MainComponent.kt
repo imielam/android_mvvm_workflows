@@ -18,7 +18,7 @@ import javax.inject.Singleton
  * Created by maciej.imiela on 25.12.16.
  */
 @ActivitySingleton
-@Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(MainModule::class))
+@Subcomponent(modules = arrayOf(MainModule::class))
 interface MainComponent {
     fun inject(fragment: MainFragment)
 }

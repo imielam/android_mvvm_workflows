@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.driversweek.R
+import mobilehexers.eu.driversweek.base.extensions.baseActivity
+import mobilehexers.eu.driversweek.base.extensions.baseApplication
 import mobilehexers.eu.driversweek.extensions.logTag
 import javax.inject.Inject
 
@@ -21,7 +23,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).activityComponent.inject(this)
+        baseActivity.baseApplication.mainComponent?.inject(this)
     }
 
     override fun onResume() {

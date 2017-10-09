@@ -2,6 +2,7 @@ package com.mobilehexers.driversweek.base.dependencyinjection.component
 
 import android.content.Context
 import com.mobilehexers.driversweek.base.dependencyinjection.module.ApplicationModule
+import com.mobilehexers.driversweek.base.dependencyinjection.module.MainModule
 import dagger.Component
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(ApplicationModule::class))
 interface ApplicationComponent {
+    fun plus(module: MainModule) : MainComponent
 
     fun inject(activity: MainActivity)
     fun inject(activity: StartActivity)
