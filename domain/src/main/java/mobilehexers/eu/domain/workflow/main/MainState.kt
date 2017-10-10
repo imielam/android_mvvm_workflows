@@ -1,4 +1,6 @@
-package mobilehexers.eu.domain.workflow
+package mobilehexers.eu.domain.workflow.main
+
+import mobilehexers.eu.domain.workflow.base.State
 
 /**
  * Created by mimiela on 9/23/17.
@@ -13,5 +15,9 @@ class MainState : State {
             MainEnum.MAIN -> currentState = MainEnum.ENDED
             //TODO: Add logging for else
         }
+    }
+
+    override fun toString(): String {
+        return "MainState(currentState=${currentState.name})"
     }
 }

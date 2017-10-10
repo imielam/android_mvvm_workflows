@@ -1,9 +1,15 @@
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    generateStubs = true
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     compile "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
 
     testCompile "junit:junit:$junit_version"

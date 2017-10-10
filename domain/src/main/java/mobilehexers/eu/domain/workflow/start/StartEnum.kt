@@ -1,4 +1,4 @@
-package mobilehexers.eu.domain.workflow
+package mobilehexers.eu.domain.workflow.start
 
 /**
  * Created by mimiela on 9/25/17.
