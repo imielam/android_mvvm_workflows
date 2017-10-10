@@ -10,7 +10,7 @@ import mobilehexers.eu.domain.rx.SchedulerProvider
 import javax.inject.Singleton
 
 @Singleton
-class AndroidSchedulerProvider: SchedulerProvider{
+class AndroidSchedulerProvider : SchedulerProvider {
 
     override val mainThread: Scheduler
         get() = AndroidSchedulers.mainThread()

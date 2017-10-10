@@ -15,7 +15,6 @@ import mobilehexers.eu.driversweek.base.android.BaseApplication
 
 val Activity.baseApplication: BaseApplication
     get() = application as BaseApplication
+
 val Fragment.baseActivity: BaseActivity
     get() = activity as BaseActivity
-//val Any.logTag: String
-//    get() = javaClass.simpleName
