@@ -1,4 +1,8 @@
-package com.mobilehexers.driversweek.base.dependencyinjection.module
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
+package mobilehexers.eu.driversweek.base.dependencyinjection.application
 
 import android.app.Application
 import android.content.Context
@@ -15,11 +19,10 @@ import javax.inject.Singleton
  */
 
 @Module
-class ApplicationModule constructor(val application: Application) {
-
+class ApplicationModule {
     @Provides
     @Singleton
-    internal fun provideContext(): Context = application
+    internal fun provideContext(application: Application): Context = application
 
     @Provides
     @Singleton

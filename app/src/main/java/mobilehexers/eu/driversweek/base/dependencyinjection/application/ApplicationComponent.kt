@@ -1,27 +1,32 @@
-package com.mobilehexers.driversweek.base.dependencyinjection.component
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
 
-import android.content.Context
-import com.mobilehexers.driversweek.base.dependencyinjection.module.ApplicationModule
-import com.mobilehexers.driversweek.base.dependencyinjection.module.MainActivityModule
+package mobilehexers.eu.driversweek.base.dependencyinjection.application
+
+import android.app.Application
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
-import mobilehexers.eu.driversweek.main.MainActivity
-import mobilehexers.eu.driversweek.start.StartActivity
+import mobilehexers.eu.driversweek.base.android.BaseApplication
 import javax.inject.Singleton
 
 /**
- * Created by maciej.imiela on 25.12.16.
+ * Created by mimiela on 10.10.17.
  */
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class))
-interface ApplicationComponent {
-    fun plus(module: MainActivityModule): MainActivityComponent
+@Component(modules = arrayOf(AndroidInjectionModule::class, ActivityProvider::class, ApplicationModule::class))
+interface ApplicationComponent : AndroidInjector<BaseApplication> {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
+        fun build(): ApplicationComponent
+    }
 
-    fun inject(activity: MainActivity)
-    fun inject(activity: StartActivity)
-
-    val context: Context
     val mainWorkflow: MainWorkflow
     val startWorkflow: StartWorkflow
 }

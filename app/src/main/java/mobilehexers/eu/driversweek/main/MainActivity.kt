@@ -1,7 +1,12 @@
 package mobilehexers.eu.driversweek.main
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.util.Log
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
@@ -10,22 +15,25 @@ import mobilehexers.eu.domain.workflow.main.MainState
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.base.android.BaseActivity
-import mobilehexers.eu.driversweek.base.extensions.baseApplication
 import mobilehexers.eu.driversweek.extensions.logTag
 import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+
     @Inject
     lateinit var workflow: MainWorkflow
     private var disposable: Disposable? = null
-    private val applicationComponent by lazy { baseApplication.applicationComponent }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate")
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
-        baseApplication.plusMainComponent()
-        applicationComponent.inject(this)
         if (savedInstanceState == null) {
             disposable = workflow.init(Consumer { state -> handleStateChange(state as MainState) }, Consumer { }, Action { disposable?.dispose() })
         }
@@ -35,11 +43,6 @@ class MainActivity : BaseActivity() {
         super.onResume()
         Log.d(logTag, "onResume")
         workflow.next()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        baseApplication.clearMainComponent()
     }
 
     private fun handleStateChange(state: MainState) {
