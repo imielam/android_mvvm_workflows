@@ -4,6 +4,7 @@
 
 package mobilehexers.eu.domain.workflow.start
 
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.workflow.base.State
 
 class StartState : State {
@@ -13,8 +14,12 @@ class StartState : State {
     override fun next() {
         when (currentState) {
             StartEnum.INITIALIZED -> currentState = StartEnum.ENDED
-        //TODO: Add logging for else
+            else -> println(logTag + "Unsupported state: " + currentState)
         }
+    }
+
+    override fun reset() {
+        currentState = StartEnum.INITIALIZED
     }
 
     override fun toString(): String {

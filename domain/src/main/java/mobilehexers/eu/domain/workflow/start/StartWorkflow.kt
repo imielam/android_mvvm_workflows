@@ -8,4 +8,4 @@ import mobilehexers.eu.domain.rx.SchedulerProvider
 import mobilehexers.eu.domain.workflow.base.Workflow
 import javax.inject.Inject
 
-class StartWorkflow @Inject constructor(schedulerProvider: SchedulerProvider) : Workflow(StartState(), schedulerProvider) {}
+class StartWorkflow @Inject constructor(schedulerProvider: SchedulerProvider) : Workflow(StartState(), schedulerProvider)

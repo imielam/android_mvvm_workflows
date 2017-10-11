@@ -11,21 +11,22 @@ import io.reactivex.processors.ReplayProcessor
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.rx.SchedulerProvider
 
-abstract class Workflow(private val state: State, private val schedulerProvider: SchedulerProvider) {
+abstract class Workflow(private var state: State, private val schedulerProvider: SchedulerProvider) {
 
     private val processor = ReplayProcessor.createWithSize<State>(1)!!
 
     fun init(next: Consumer<State>, error: Consumer<Throwable>, complete: Action): Disposable {
-        println(logTag + " processor.hasSubscribers: " + processor.hasSubscribers())
-        val disposable = processor.subscribeOn(schedulerProvider.ioThread).observeOn(schedulerProvider.mainThread).subscribe(next, error, complete)
-        println(logTag + " processor.hasSubscribers: " + processor.hasSubscribers())
-        return disposable
+        return processor.subscribeOn(schedulerProvider.ioThread).observeOn(schedulerProvider.mainThread).subscribe(next, error, complete)
     }
 
     fun next() {
         state.next()
         println(logTag + " state: " + state)
         processor.onNext(state)
+    }
+
+    fun end() {
+        state.reset()
     }
 
     override fun toString(): String {

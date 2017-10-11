@@ -87,4 +87,6 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun addDisposable(disposable: Disposable) {
         disposables.add(disposable)
     }
+
+    protected abstract fun finishActivity()
 }

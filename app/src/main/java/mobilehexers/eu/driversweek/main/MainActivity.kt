@@ -28,11 +28,16 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
             Log.d(logTag, "handleStateChange: " + state)
             when (state.currentState) {
                 MainEnum.MAIN -> switchFragment(MainFragment.newInstance())
-                MainEnum.ENDED -> finish()
+                MainEnum.ENDED -> finishActivity()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
         } else {
             Log.w(logTag, "Wrong state type: " + state::class)
         }
+    }
+
+    override fun finishActivity() {
+        workflow.end()
+        finish()
     }
 }

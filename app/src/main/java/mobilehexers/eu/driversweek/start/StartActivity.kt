@@ -24,11 +24,17 @@ class StartActivity : BaseActivity() {
         if (state is StartState) {
             Log.d(logTag, "handleStateChange: " + state)
             when (state.currentState) {
-                StartEnum.ENDED -> startActivity(MainActivity::class)
+                StartEnum.ENDED -> finishActivity()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
         } else {
             Log.w(logTag, "Wrong state type: " + state::class)
         }
+    }
+
+    override fun finishActivity() {
+        workflow.end()
+        startActivity(MainActivity::class)
+        finish()
     }
 }
