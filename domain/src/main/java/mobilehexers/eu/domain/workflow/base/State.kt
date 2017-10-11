@@ -1,8 +1,10 @@
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
 package mobilehexers.eu.domain.workflow.base
 
-/**
- * Created by mimiela on 9/23/17.
- */
 interface State {
+    fun reset()
     fun next()
 }

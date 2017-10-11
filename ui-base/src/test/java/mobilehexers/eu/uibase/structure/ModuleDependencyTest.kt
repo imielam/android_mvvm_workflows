@@ -1,7 +1,11 @@
-package mobilehexers.eu.ui_base.structure
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
+package mobilehexers.eu.uibase.structure
 
 import mobilehexers.eu.presentation.structure.TestClassPresentation
-import mobilehexers.eu.ui_base.test.TestClassUI
+import mobilehexers.eu.uibase.test.TestClassUI
 import org.junit.Test
 
 class ModuleDependencyTest {

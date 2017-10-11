@@ -1,10 +1,12 @@
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
 package mobilehexers.eu.domain.workflow.main
 
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.workflow.base.State
 
-/**
- * Created by mimiela on 9/23/17.
- */
 class MainState : State {
     var currentState = MainEnum.INITIALIZED
         private set
@@ -13,8 +15,12 @@ class MainState : State {
         when (currentState) {
             MainEnum.INITIALIZED -> currentState = MainEnum.MAIN
             MainEnum.MAIN -> currentState = MainEnum.ENDED
-            //TODO: Add logging for else
+            else -> println(logTag + "Unsupported state: " + currentState)
         }
+    }
+
+    override fun reset() {
+        currentState = MainEnum.INITIALIZED
     }
 
     override fun toString(): String {

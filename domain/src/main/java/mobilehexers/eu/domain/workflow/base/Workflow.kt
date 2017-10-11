@@ -1,31 +1,35 @@
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
 package mobilehexers.eu.domain.workflow.base
 
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
-import io.reactivex.processors.PublishProcessor
+import io.reactivex.processors.ReplayProcessor
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.rx.SchedulerProvider
 
-/**
- * Created by mimiela on 9/22/17.
- */
-abstract class Workflow(private val state: State, private val schedulerProvider: SchedulerProvider) {
-    private val processor = PublishProcessor.create<State>()!!
+abstract class Workflow(private var state: State, private val schedulerProvider: SchedulerProvider) {
+
+    private val processor = ReplayProcessor.createWithSize<State>(1)!!
+
+    fun init(next: Consumer<State>, error: Consumer<Throwable>, complete: Action): Disposable {
+        return processor.subscribeOn(schedulerProvider.ioThread).observeOn(schedulerProvider.mainThread).subscribe(next, error, complete)
+    }
 
     fun next() {
         state.next()
+        println(logTag + " state: " + state)
         processor.onNext(state)
     }
 
-    fun init(next: Consumer<State>, error: Consumer<Throwable>, complete: Action): Disposable =
-            processor.
-                    subscribeOn(schedulerProvider.computationThread).
-                    observeOn(schedulerProvider.mainThread).
-                    subscribe(next, error, complete)
+    fun end() {
+        state.reset()
+    }
 
     override fun toString(): String {
         return "Workflow(state=$state)"
     }
-
-
 }

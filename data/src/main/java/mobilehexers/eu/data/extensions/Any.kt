@@ -1,7 +1,8 @@
-package mobilehexers.eu.driversweek.extensions
-
-/**
- * Created by maciej.imiela on 20.07.2017.
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
+
+package mobilehexers.eu.data.extensions
+
 val Any.logTag: String
     get() = javaClass.simpleName

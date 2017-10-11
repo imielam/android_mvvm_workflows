@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2016 by Tandem Bank. All rights reserved.
  */
-package mobilehexers.eu.driversweek.base.rx
+package mobilehexers.eu.uibase.base.rx
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,5 +23,4 @@ class AndroidSchedulerProvider : SchedulerProvider {
 
     override val newThread: Scheduler
         get() = Schedulers.newThread()
-
 }
