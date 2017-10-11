@@ -5,5 +5,5 @@
 package mobilehexers.eu.domain.workflow.main
 
 enum class MainEnum {
-    INITIALIZED, ENDED, MAIN
+    INITIALIZED, ENDED, MAIN, REPOSITORY
 }

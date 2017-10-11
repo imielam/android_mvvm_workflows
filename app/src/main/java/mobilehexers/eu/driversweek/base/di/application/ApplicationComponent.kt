@@ -12,6 +12,7 @@ import dagger.android.AndroidInjector
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
 import mobilehexers.eu.driversweek.base.android.BaseApplication
+import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Singleton
 
 /**
@@ -29,4 +30,5 @@ interface ApplicationComponent : AndroidInjector<BaseApplication> {
 
     val mainWorkflow: MainWorkflow
     val startWorkflow: StartWorkflow
+    val repositoryWorkflow: RepositoryWorkflow
 }

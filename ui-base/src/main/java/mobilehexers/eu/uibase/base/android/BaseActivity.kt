@@ -88,5 +88,5 @@ abstract class BaseActivity : AppCompatActivity() {
         disposables.add(disposable)
     }
 
-    protected abstract fun finishActivity()
+    protected abstract fun finishWorkflow()
 }
