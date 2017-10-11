@@ -1,6 +1,10 @@
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
 package mobilehexers.eu.presentation.structure
 
-import mobilehexers.eu.domain.structure.TestClassDomain
+import mobilehexers.eu.domain.test.TestClassDomain
 import org.junit.Test
 
 class ModuleDependencyTest {

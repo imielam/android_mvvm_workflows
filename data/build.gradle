@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    generateStubs = true
+}
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
@@ -31,6 +36,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$support_version"
 
     compile "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     testCompile "junit:junit:$junit_version"
 
