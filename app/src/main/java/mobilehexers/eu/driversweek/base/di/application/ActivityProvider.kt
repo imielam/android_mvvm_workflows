@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.driversweek.base.dependencyinjection.application
+package mobilehexers.eu.driversweek.base.di.application
 
 import com.mobilehexers.driversweek.base.dependencyinjection.module.MainActivityModule
 import dagger.Module

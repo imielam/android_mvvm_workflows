@@ -7,20 +7,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.driversweek.R
-import mobilehexers.eu.driversweek.extensions.logTag
+import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
 
 class MainFragment : Fragment() {
 
-    @Inject
-    lateinit var mainWorkflow: MainWorkflow
+    @Inject lateinit var mainWorkflow: MainWorkflow
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -33,7 +28,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        baseActivity.baseApplication.mainComponent?.inject(this)
+        //        baseActivity.baseApplication.mainComponent?.inject(this)
     }
 
     override fun onResume() {

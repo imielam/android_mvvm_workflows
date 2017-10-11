@@ -2,6 +2,6 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.ui_base
+package mobilehexers.eu.uibase.test
 
-class TestClassData
+class TestClassUI

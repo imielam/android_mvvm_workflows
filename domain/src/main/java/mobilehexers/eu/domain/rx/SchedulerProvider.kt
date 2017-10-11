@@ -1,8 +1,10 @@
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
 package mobilehexers.eu.domain.rx
 
 import io.reactivex.Scheduler
-import io.reactivex.schedulers.Schedulers
-import javax.inject.Singleton
 
 interface SchedulerProvider {
 
@@ -13,5 +15,4 @@ interface SchedulerProvider {
     val computationThread: Scheduler
 
     val newThread: Scheduler
-
 }
