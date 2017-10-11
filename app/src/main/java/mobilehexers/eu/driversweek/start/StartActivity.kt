@@ -4,17 +4,12 @@
 
 package mobilehexers.eu.driversweek.start
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import dagger.android.AndroidInjection
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
+import mobilehexers.eu.domain.workflow.base.State
 import mobilehexers.eu.domain.workflow.start.StartEnum
 import mobilehexers.eu.domain.workflow.start.StartState
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
-import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.base.android.BaseActivity
 import mobilehexers.eu.driversweek.extensions.logTag
 import mobilehexers.eu.driversweek.main.MainActivity
@@ -22,17 +17,10 @@ import javax.inject.Inject
 
 class StartActivity : BaseActivity() {
     @Inject
-    lateinit var workflow: StartWorkflow
-    private var disposable: Disposable? = null
+    internal lateinit var workflow: StartWorkflow
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate")
-        AndroidInjection.inject(this)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
-        if (savedInstanceState == null) {
-            disposable = workflow.init(Consumer { state -> handleStateChange(state as StartState) }, Consumer { }, Action { disposable?.dispose() })
-        }
     }
 
     override fun onResume() {
@@ -41,15 +29,11 @@ class StartActivity : BaseActivity() {
         workflow.next()
     }
 
-    private fun handleStateChange(state: StartState) {
-        when (state.currentState) {
-            StartEnum.ENDED -> startMainActivity()
+    override fun handleStateChange(state: State) {
+        when ((state as StartState).currentState) {
+            StartEnum.ENDED -> startActivity(MainActivity::class)
         }
     }
 
-    private fun startMainActivity() {
-        val newIntent = Intent(baseContext, MainActivity::class.java)
-        startActivity(newIntent)
-        finish()
-    }
+    override fun getWorkflowInstance() = workflow
 }
