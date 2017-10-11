@@ -24,7 +24,7 @@ class StartActivity : BaseActivity() {
         if (state is StartState) {
             Log.d(logTag, "handleStateChange: " + state)
             when (state.currentState) {
-                StartEnum.ENDED -> finishActivity()
+                StartEnum.ENDED -> finishWorkflow()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
         } else {
@@ -32,7 +32,7 @@ class StartActivity : BaseActivity() {
         }
     }
 
-    override fun finishActivity() {
+    override fun finishWorkflow() {
         workflow.end()
         startActivity(MainActivity::class)
         finish()

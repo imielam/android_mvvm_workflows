@@ -2,26 +2,25 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.main
+package mobilehexers.eu.presentation.repository.workflow
 
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.workflow.base.State
 
-class MainState : State {
-    var currentState = MainEnum.INITIALIZED
+class RepositoryState : State {
+    var currentState = RepositoryEnum.INITIALIZED
         private set
 
     override fun next() {
         when (currentState) {
-            MainEnum.INITIALIZED -> currentState = MainEnum.MAIN
-            MainEnum.MAIN -> currentState = MainEnum.REPOSITORY
-            MainEnum.REPOSITORY -> currentState = MainEnum.ENDED
+            RepositoryEnum.INITIALIZED -> currentState = RepositoryEnum.LIST
+            RepositoryEnum.LIST -> currentState = RepositoryEnum.DETAILS
             else -> println(logTag + "Unsupported state: " + currentState)
         }
     }
 
     override fun reset() {
-        currentState = MainEnum.INITIALIZED
+        currentState = RepositoryEnum.INITIALIZED
     }
 
     override fun toString(): String {
