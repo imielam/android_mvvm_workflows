@@ -21,7 +21,22 @@ abstract class Workflow(private var state: State, private val schedulerProvider:
 
     fun next() {
         state.next()
-        println(logTag + " state: " + state)
+        emitState()
+    }
+
+
+    fun next(nextState: State) {
+        state.next(nextState)
+        emitState()
+    }
+
+    fun previous() {
+        state.previous()
+        emitState()
+    }
+
+    private fun emitState() {
+        println(logTag + " emitting: " + state)
         processor.onNext(state)
     }
 

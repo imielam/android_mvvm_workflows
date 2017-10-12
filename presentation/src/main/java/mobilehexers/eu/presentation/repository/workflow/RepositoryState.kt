@@ -19,11 +19,23 @@ class RepositoryState : State {
         }
     }
 
+    override fun next(state: State) {
+        next()
+    }
+
+    override fun previous() {
+        when (currentState) {
+            RepositoryEnum.DETAILS -> currentState = RepositoryEnum.LIST
+            RepositoryEnum.LIST -> currentState = RepositoryEnum.ENDED
+            else -> println(logTag + "Unsupported state: " + currentState)
+        }
+    }
+
     override fun reset() {
         currentState = RepositoryEnum.INITIALIZED
     }
 
     override fun toString(): String {
-        return "MainState(currentState=${currentState.name})"
+        return "RepositoryState(state=${currentState.name})"
     }
 }
