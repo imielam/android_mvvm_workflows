@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open.repository.list">Open Repository List Screen</string>
+    <string name="enter.repository.details">Enter Repository Details</string>
+    <string name="repository.details.entry.message">You are now on repository details screen</string>
 </resources>

@@ -1,4 +1,8 @@
-package mobilehexers.eu.driversweek.main
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
+package mobilehexers.eu.driversweek.repository
 
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -7,31 +11,32 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.workflow.base.State
 import mobilehexers.eu.domain.workflow.base.Workflow
-import mobilehexers.eu.domain.workflow.main.MainEnum
-import mobilehexers.eu.domain.workflow.main.MainState
-import mobilehexers.eu.domain.workflow.main.MainWorkflow
-import mobilehexers.eu.driversweek.repository.RepositoryActivity
+import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsFragment
+import mobilehexers.eu.driversweek.repository.list.RepositoryListFragment
+import mobilehexers.eu.presentation.repository.workflow.RepositoryEnum
+import mobilehexers.eu.presentation.repository.workflow.RepositoryState
+import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import mobilehexers.eu.uibase.base.android.BaseActivity
 import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+class RepositoryActivity : BaseActivity(), HasSupportFragmentInjector {
 
     @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Inject lateinit var workflow: MainWorkflow
+    @Inject lateinit var workflow: RepositoryWorkflow
 
     override fun getWorkflowInstance(): Workflow = workflow
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 
     override fun handleStateChange(state: State) {
-        if (state is MainState) {
+        if (state is RepositoryState) {
             Log.d(logTag, "handleStateChange: " + state)
             when (state.currentState) {
-                MainEnum.INITIALIZED -> workflow.next()
-                MainEnum.MAIN -> switchFragment(MainFragment.newInstance())
-                MainEnum.REPOSITORY -> switchToRepositoryScreen()
-                MainEnum.ENDED -> finishWorkflow()
+                RepositoryEnum.LIST -> switchFragment(RepositoryListFragment.newInstance())
+                RepositoryEnum.DETAILS -> addFragment(RepositoryDetailsFragment.newInstance())
+                RepositoryEnum.ENDED -> finishWorkflow()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
         } else {
@@ -39,13 +44,9 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
         }
     }
 
-    private fun switchToRepositoryScreen() {
-        startActivity(RepositoryActivity::class)
-        workflow.end()
-    }
-
     override fun finishWorkflow() {
         workflow.end()
+        startActivity(MainActivity::class)
         finish()
     }
 }

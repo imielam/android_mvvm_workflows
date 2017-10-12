@@ -38,9 +38,9 @@ abstract class BaseActivity : AppCompatActivity() {
             val disposable = workflowInstance.init(Consumer { state -> handleStateChange(state) },
                     Consumer { throwable -> Log.e(logTag, throwable.toString()) }, Action { disposeWorkflow() })
             workflowDisposable = disposable
+            Log.d(logTag, "Workflow initialized: " + workflowInstance)
         }
         workflowInstance.next()
-        Log.d(logTag, "Workflow initialized: " + workflowInstance)
     }
 
     private fun disposeWorkflow() {
@@ -51,6 +51,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         disposeSubscriptions()
+    }
+
+    override fun onBackPressed() {
+        getWorkflowInstance().previous()
     }
 
     private fun disposeSubscriptions() {
@@ -88,5 +92,5 @@ abstract class BaseActivity : AppCompatActivity() {
         disposables.add(disposable)
     }
 
-    protected abstract fun finishActivity()
+    protected abstract fun finishWorkflow()
 }
