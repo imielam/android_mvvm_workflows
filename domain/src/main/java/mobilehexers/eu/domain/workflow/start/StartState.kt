@@ -18,11 +18,19 @@ class StartState : State {
         }
     }
 
+    override fun next(state: State) {
+        next()
+    }
+
+    override fun previous() {
+        currentState = StartEnum.ENDED
+    }
+
     override fun reset() {
         currentState = StartEnum.INITIALIZED
     }
 
     override fun toString(): String {
-        return "StartState(currentState=${currentState.name})"
+        return "StartState(state=${currentState.name})"
     }
 }

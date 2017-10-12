@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_main.main_container_applause
+import mobilehexers.eu.domain.workflow.main.MainEnum
+import mobilehexers.eu.domain.workflow.main.MainState
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.extensions.inflate
@@ -43,6 +45,6 @@ class MainFragment : Fragment() {
     }
 
     private fun openApplauseWorkflow() {
-        mainWorkflow.next()
+        mainWorkflow.next(MainState(MainEnum.REPOSITORY))
     }
 }

@@ -30,7 +30,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
             when (state.currentState) {
                 MainEnum.INITIALIZED -> workflow.next()
                 MainEnum.MAIN -> switchFragment(MainFragment.newInstance())
-                MainEnum.REPOSITORY -> startActivity(RepositoryActivity::class)
+                MainEnum.REPOSITORY -> switchToRepositoryScreen()
                 MainEnum.ENDED -> finishWorkflow()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
@@ -39,7 +39,13 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
         }
     }
 
+    private fun switchToRepositoryScreen() {
+        startActivity(RepositoryActivity::class)
+        workflow.end()
+    }
+
     override fun finishWorkflow() {
         workflow.end()
+        finish()
     }
 }
