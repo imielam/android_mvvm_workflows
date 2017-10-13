@@ -10,11 +10,27 @@
               android:orientation="vertical"
               tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
 
-    <Button
-        android:id="@+id/repository_list_details_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter.repository.details" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/repository_list_details_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/enter.repository.details" />
+
+        <CheckBox
+            android:id="@+id/repository_list_limit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/limit.repository.data" />
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/repository_list_view"
