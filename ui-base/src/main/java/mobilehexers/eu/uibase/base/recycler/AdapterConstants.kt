@@ -5,6 +5,6 @@
 package mobilehexers.eu.uibase.base.recycler
 
 object AdapterConstants {
-    val NEWS = 1
+    val REPOSITORY_ITEM = 1
     val LOADING = 2
 }

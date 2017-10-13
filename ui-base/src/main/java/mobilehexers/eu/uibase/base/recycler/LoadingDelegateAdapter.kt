@@ -12,12 +12,10 @@ import mobilehexers.eu.uibase.extensions.inflate
 
 class LoadingDelegateAdapter : ViewTypeDelegateAdapter {
 
-    override fun onCreateViewHolder(parent: ViewGroup) = TurnsViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup) = LoadingItemViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
     }
 
-    class TurnsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-            parent.inflate(R.layout.repository_item_loading)) {
-    }
+    class LoadingItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.repository_item_loading))
 }

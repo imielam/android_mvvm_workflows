@@ -12,7 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_repository_list.*
+import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_details_button
+import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
@@ -44,13 +45,22 @@ class RepositoryListFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initAdapter()
     }
 
     private fun initView() {
-        detailButton.setOnClickListener({showDetails()})
+        detailButton.setOnClickListener({ showDetails() })
         listView.setHasFixedSize(true)
         listView.layoutManager = LinearLayoutManager(context)
     }
+
+    private fun initAdapter() {
+        val repositoryListAdapter = RepositoryListAdapter()
+        repositoryListAdapter.addRepositories(createMockRepositoryList())
+        listView.adapter = repositoryListAdapter
+    }
+
+    private fun createMockRepositoryList() = (1..10).map { RepositoryListItem("Github Repository: " + it) }
 
     private fun showDetails() {
         workflow.next()
