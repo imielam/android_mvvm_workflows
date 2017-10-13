@@ -8,6 +8,7 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import mobilehexers.eu.data.base.retrofit.RestAPI
 import mobilehexers.eu.domain.rx.SchedulerProvider
 import mobilehexers.eu.domain.workflow.main.MainWorkflow
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
@@ -36,4 +37,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton internal fun provideRepositoryWorkflow() = RepositoryWorkflow(AndroidSchedulerProvider())
+
+    @Provides
+    @Singleton internal fun provideRestApi() = RestAPI()
 }

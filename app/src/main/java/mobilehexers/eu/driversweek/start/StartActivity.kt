@@ -10,6 +10,7 @@ import mobilehexers.eu.domain.workflow.start.StartEnum
 import mobilehexers.eu.domain.workflow.start.StartState
 import mobilehexers.eu.domain.workflow.start.StartWorkflow
 import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.driversweek.repository.RepositoryActivity
 import mobilehexers.eu.uibase.base.android.BaseActivity
 import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
@@ -34,7 +35,7 @@ class StartActivity : BaseActivity() {
 
     override fun finishWorkflow() {
         workflow.end()
-        startActivity(MainActivity::class)
+        startActivity(RepositoryActivity::class)
         finish()
     }
 }
