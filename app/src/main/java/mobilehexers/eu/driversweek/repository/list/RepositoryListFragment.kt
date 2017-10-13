@@ -6,22 +6,32 @@ package mobilehexers.eu.driversweek.repository.list
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_container
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_details_button
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
 import mobilehexers.eu.driversweek.R
+import mobilehexers.eu.driversweek.extensions.baseActivity
 import mobilehexers.eu.driversweek.extensions.inflate
+import mobilehexers.eu.driversweek.repository.manager.RepositoryManager
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Inject
 
 class RepositoryListFragment : Fragment() {
 
     @Inject lateinit var workflow: RepositoryWorkflow
+    @Inject lateinit var repositoryManager: RepositoryManager
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
     private val detailButton by lazy { repository_list_details_button }
     private val listView by lazy { repository_list_view }
 
@@ -39,6 +49,11 @@ class RepositoryListFragment : Fragment() {
         super.onAttach(context)
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        disposeSubscriptions()
+    }
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = container?.inflate(
             R.layout.fragment_repository_list)
 
@@ -46,6 +61,8 @@ class RepositoryListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initAdapter()
+        addDisposable(repositoryManager.getRepositoryList().subscribe({ next -> (listView.adapter as RepositoryListAdapter).addRepositories(next) },
+                { e -> Snackbar.make(repository_list_container, e.localizedMessage, Snackbar.LENGTH_SHORT).show() }))
     }
 
     private fun initView() {
@@ -56,13 +73,18 @@ class RepositoryListFragment : Fragment() {
 
     private fun initAdapter() {
         val repositoryListAdapter = RepositoryListAdapter()
-        repositoryListAdapter.addRepositories(createMockRepositoryList())
         listView.adapter = repositoryListAdapter
     }
 
-    private fun createMockRepositoryList() = (1..10).map { RepositoryListItem("Github Repository: " + it) }
-
     private fun showDetails() {
         workflow.next()
+    }
+
+    private fun addDisposable(disposable: Disposable) {
+        disposables.add(disposable)
+    }
+
+    private fun disposeSubscriptions() {
+        disposables.clear()
     }
 }
