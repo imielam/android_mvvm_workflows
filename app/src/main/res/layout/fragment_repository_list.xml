@@ -15,31 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/filter.repository.data"
+        android:inputType="text"
         tools:text="@string/filter.repository.data" />
 
-    <LinearLayout
+    <CheckBox
+        android:id="@+id/repository_list_limit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/repository_list_details_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/enter.repository.details" />
-
-        <CheckBox
-            android:id="@+id/repository_list_limit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/limit.repository.data" />
-
-    </LinearLayout>
-
+        android:text="@string/limit.repository.data" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/repository_list_view"

@@ -3,7 +3,11 @@
 
     <string name="open.repository.list">Open Repository List Screen</string>
     <string name="enter.repository.details">Enter Repository Details</string>
-    <string name="limit.repository.data">Limit data to 20</string>
+    <string name="limit.repository.data">Limit dataset to 20 positions</string>
     <string name="filter.repository.data">Start writing to filter data</string>
-    <string name="repository.details.entry.message">You are now on repository details screen</string>
+    <string name="repository.details.entry.message">Repository details</string>
+    <string name="repository.details.entry.id">ID:</string>
+    <string name="repository.details.entry.name">Name:</string>
+    <string name="repository.details.entry.description">Description:</string>
+    <string name="repository.details.entry.language">Language:</string>
 </resources>

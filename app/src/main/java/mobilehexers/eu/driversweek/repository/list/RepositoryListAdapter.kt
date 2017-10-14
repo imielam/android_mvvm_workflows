@@ -10,9 +10,10 @@ import android.view.ViewGroup
 import mobilehexers.eu.domain.recycler.ViewType
 import mobilehexers.eu.uibase.base.recycler.AdapterConstants
 import mobilehexers.eu.uibase.base.recycler.LoadingDelegateAdapter
+import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener
 import mobilehexers.eu.uibase.base.recycler.ViewTypeDelegateAdapter
 
-class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepositoryListAdapter(listener: RecyclerViewOnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var allRepositoryItems = mutableListOf<RepositoryListItem>()
     private var adapterItems = mutableListOf<ViewType>()
@@ -20,6 +21,7 @@ class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var filterText = ""
     private var limited = false
     private var limitValue: Int = allRepositoryItems.size
+    private val innerListener: RecyclerViewOnItemClickListener
 
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
 
@@ -31,12 +33,13 @@ class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterConstants.REPOSITORY_ITEM, RepositoryItemDelegateAdapter())
         adapterItems.add(loadingItem)
+        innerListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = delegateAdapters.get(viewType).onCreateViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder,
-            this.adapterItems[position])
+            this.adapterItems[position], innerListener)
 
     override fun getItemCount() = adapterItems.size
 
