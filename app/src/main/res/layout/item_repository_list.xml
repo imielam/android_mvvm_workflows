@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/repository_list_item_container"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="?selectableItemBackground"
+              tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+
+    <TextView
+        android:id="@+id/repository_list_item_text"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:text="@string/open.repository.list" />
+</LinearLayout>

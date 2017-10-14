@@ -1,0 +1,33 @@
+<!--
+  ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+  -->
+
+<LinearLayout android:id="@+id/repository_list_container"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+
+    <EditText
+        android:id="@+id/repository_list_filter_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/filter.repository.data"
+        android:inputType="text"
+        tools:text="@string/filter.repository.data" />
+
+    <CheckBox
+        android:id="@+id/repository_list_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/limit.repository.data" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/repository_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
