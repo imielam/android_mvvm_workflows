@@ -14,8 +14,12 @@ import mobilehexers.eu.uibase.base.recycler.ViewTypeDelegateAdapter
 
 class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items: ArrayList<ViewType>
+    private var allRepositoryItems = mutableListOf<ViewType>()
+    private var adapterItems = mutableListOf<ViewType>()
+    private var limitedItems = allRepositoryItems
+
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
+
     private val loadingItem = object : ViewType {
         override fun getViewType() = AdapterConstants.LOADING
     }
@@ -23,31 +27,37 @@ class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     init {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterConstants.REPOSITORY_ITEM, RepositoryItemDelegateAdapter())
-        items = ArrayList()
-        items.add(loadingItem)
+        adapterItems.add(loadingItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = delegateAdapters.get(viewType).onCreateViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = delegateAdapters.get(getItemViewType(position)).onBindViewHolder(holder,
-            this.items[position])
+            this.adapterItems[position])
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = adapterItems.size
 
-    override fun getItemViewType(position: Int) = this.items[position].getViewType()
+    override fun getItemViewType(position: Int) = this.adapterItems[position].getViewType()
 
     fun addRepositories(repositories: List<ViewType>) {
-        val initPosition = items.size - 1
-        items.removeAt(initPosition)
-        notifyItemRemoved(initPosition)
-        items.addAll(repositories)
-        items.add(loadingItem)
-        notifyItemRangeInserted(0, items.size)
+        allRepositoryItems.addAll(repositories)
+        updateAdapter()
     }
 
-    fun getRepositories(): List<RepositoryListItem> {
-        return items.filter { it.getViewType() == AdapterConstants.REPOSITORY_ITEM }.map { it as RepositoryListItem }
+
+    fun limitRepositoriesTo(max: Int) {
+        limitedItems = allRepositoryItems.subList(0, max)
+        updateAdapter()
     }
 
-    private fun getLastPosition() = if (items.lastIndex == -1) 0 else items.lastIndex
+    fun removeLimit() {
+        limitedItems = allRepositoryItems
+        updateAdapter()
+    }
+
+    private fun updateAdapter() {
+        adapterItems.clear()
+        adapterItems.addAll(limitedItems)
+        notifyDataSetChanged()
+    }
 }
