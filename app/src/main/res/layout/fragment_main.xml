@@ -14,5 +14,5 @@
         android:id="@+id/main_container_applause"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/open.repository.list" />
+        android:text="@string/main.main.open.repository.list" />
 </LinearLayout>

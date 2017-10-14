@@ -15,15 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/filter.repository.data"
+        android:hint="@string/repository.list.filter.data"
         android:inputType="text"
-        tools:text="@string/filter.repository.data" />
+        tools:text="@string/repository.list.filter.data" />
 
     <CheckBox
         android:id="@+id/repository_list_limit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/limit.repository.data" />
+        android:text="@string/repository.list.limit.data" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/repository_list_view"
