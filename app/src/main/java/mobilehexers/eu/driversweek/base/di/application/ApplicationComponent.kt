@@ -11,8 +11,8 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import mobilehexers.eu.domain.rx.SchedulerProvider
-import mobilehexers.eu.domain.workflow.main.MainWorkflow
-import mobilehexers.eu.domain.workflow.start.StartWorkflow
+import mobilehexers.eu.presentation.main.workflow.MainWorkflow
+import mobilehexers.eu.presentation.start.workflow.StartWorkflow
 import mobilehexers.eu.driversweek.base.android.BaseApplication
 import mobilehexers.eu.driversweek.repository.dependencyinjection.RepositoryActivityModule
 import mobilehexers.eu.driversweek.start.di.StartActivityModule

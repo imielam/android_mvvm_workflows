@@ -7,9 +7,9 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.workflow.base.State
 import mobilehexers.eu.domain.workflow.base.Workflow
-import mobilehexers.eu.domain.workflow.main.MainEnum
-import mobilehexers.eu.domain.workflow.main.MainState
-import mobilehexers.eu.domain.workflow.main.MainWorkflow
+import mobilehexers.eu.presentation.main.workflow.MainEnum
+import mobilehexers.eu.presentation.main.workflow.MainState
+import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.driversweek.repository.RepositoryActivity
 import mobilehexers.eu.uibase.base.android.BaseActivity
 import mobilehexers.eu.uibase.extensions.logTag
