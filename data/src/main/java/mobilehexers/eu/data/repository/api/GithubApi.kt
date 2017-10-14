@@ -15,5 +15,5 @@ interface GithubApi {
     fun getRepos(@Path("user") user: String): Call<List<GithubRepositoryResponse>>
 
     @GET("repos/{user}/{repository_name}")
-    fun getRepositoryDetails(@Path("user") user: String, @Path("repository_name") repositoryName: String): Call<List<GithubRepositoryDetailsResponse>>
+    fun getRepositoryDetails(@Path("user") user: String, @Path("repository_name") repositoryName: String): Call<GithubRepositoryDetailsResponse>
 }

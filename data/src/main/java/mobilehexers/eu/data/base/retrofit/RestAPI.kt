@@ -22,6 +22,6 @@ class RestAPI {
     }
 
     fun getRepositoryList(username: String): Call<List<GithubRepositoryResponse>> = githubApi.getRepos(username)
-    fun getRepositoryDetails(username: String, repositoryName: String): Call<List<GithubRepositoryDetailsResponse>> = githubApi.getRepositoryDetails(username,
+    fun getRepositoryDetails(username: String, repositoryName: String): Call<GithubRepositoryDetailsResponse> = githubApi.getRepositoryDetails(username,
             repositoryName)
 }
