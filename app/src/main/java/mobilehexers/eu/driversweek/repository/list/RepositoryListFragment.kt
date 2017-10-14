@@ -18,6 +18,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_container
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_details_button
+import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_filter_text
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_limit
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
 import mobilehexers.eu.driversweek.R
@@ -36,6 +37,7 @@ class RepositoryListFragment : Fragment() {
     private val detailButton by lazy { repository_list_details_button }
     private val listView by lazy { repository_list_view }
     private val limitCheckBox by lazy { repository_list_limit }
+    private val filterTextView by lazy { repository_list_filter_text }
 
     companion object {
         fun newInstance(): RepositoryListFragment {
