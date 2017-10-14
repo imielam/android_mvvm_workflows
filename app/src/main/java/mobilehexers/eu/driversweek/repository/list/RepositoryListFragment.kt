@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -72,8 +73,23 @@ class RepositoryListFragment : Fragment() {
     private fun initView() {
         detailButton.setOnClickListener({ showDetails() })
         limitCheckBox.setOnClickListener({ limitRepositories(limitCheckBox.isChecked) })
+        addDisposable(RxTextView.textChanges(filterTextView).filter { text -> text.isNotBlank() }.subscribe({ text -> filterRepositoryList(text.toString()) }))
+        addDisposable(RxTextView.textChanges(filterTextView).filter { text -> text.isBlank() }.subscribe({ _ -> removeFilterFromRepositoryList() }))
         listView.setHasFixedSize(true)
         listView.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun removeFilterFromRepositoryList() {
+        if (listView.adapter is RepositoryListAdapter) {
+            val adapter = listView.adapter as RepositoryListAdapter
+            adapter.removeFilter()
+        }
+    }
+
+    private fun filterRepositoryList(text: String) {
+        Log.v(logTag, "Text changed. Current text: " + text)
+        val adapter = listView.adapter as RepositoryListAdapter
+        adapter.filterRepositories(text)
     }
 
     private fun limitRepositories(selected: Boolean) {
