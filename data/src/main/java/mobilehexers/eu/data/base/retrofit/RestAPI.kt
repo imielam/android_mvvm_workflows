@@ -21,7 +21,7 @@ class RestAPI {
         retrofit.create(GithubApi::class.java)
     }
 
-    fun getRepositoryList(username: String): Call<List<GithubRepositoryResponse>> = githubApi.getRepos(username)
+    fun getRepositoryList(username: String): Call<List<GithubRepositoryResponse>> = githubApi.getRepositoryList(username)
     fun getRepositoryDetails(username: String, repositoryName: String): Call<GithubRepositoryDetailsResponse> = githubApi.getRepositoryDetails(username,
             repositoryName)
 }

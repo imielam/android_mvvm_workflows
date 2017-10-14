@@ -64,8 +64,12 @@ class RepositoryListFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        addDisposable(repositoryManager.getRepositoryList().subscribe({ next -> listAdapter.addRepositories(next) },
-                { e -> Snackbar.make(repository_list_container, e.localizedMessage, Snackbar.LENGTH_SHORT).show() }))
+        addDisposable(repositoryManager.getRepositoryList().subscribe({ next -> listAdapter.addRepositories(next) }, { e -> handleError(e) }))
+    }
+
+    private fun handleError(e: Throwable) {
+        Log.e(logTag, e.localizedMessage)
+        Snackbar.make(repository_list_container, e.localizedMessage, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun initView() {

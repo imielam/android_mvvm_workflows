@@ -19,9 +19,6 @@ import mobilehexers.eu.driversweek.start.di.StartActivityModule
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Singleton
 
-/**
- * Created by mimiela on 10.10.17.
- */
 @Singleton
 @Component(modules = arrayOf(AndroidInjectionModule::class, ApplicationModule::class, StartActivityModule::class, MainActivityModule::class,
         RepositoryActivityModule::class))
