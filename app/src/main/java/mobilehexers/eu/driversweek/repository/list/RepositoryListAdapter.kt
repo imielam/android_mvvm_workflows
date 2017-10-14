@@ -14,9 +14,12 @@ import mobilehexers.eu.uibase.base.recycler.ViewTypeDelegateAdapter
 
 class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var allRepositoryItems = mutableListOf<ViewType>()
+    private var allRepositoryItems = mutableListOf<RepositoryListItem>()
     private var adapterItems = mutableListOf<ViewType>()
-    private var limitedItems = allRepositoryItems
+    private var filtered = false
+    private var filterText = ""
+    private var limited = false
+    private var limitValue: Int = allRepositoryItems.size
 
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
 
@@ -39,25 +42,51 @@ class RepositoryListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int) = this.adapterItems[position].getViewType()
 
-    fun addRepositories(repositories: List<ViewType>) {
+    fun addRepositories(repositories: List<RepositoryListItem>) {
         allRepositoryItems.addAll(repositories)
         updateAdapter()
     }
 
-
     fun limitRepositoriesTo(max: Int) {
-        limitedItems = allRepositoryItems.subList(0, max)
+        limited = true
+        limitValue = max
         updateAdapter()
     }
 
     fun removeLimit() {
-        limitedItems = allRepositoryItems
+        limited = false
+        limitValue = allRepositoryItems.size
+        updateAdapter()
+    }
+
+    fun filterRepositories(text: String) {
+        filtered = true
+        filterText = text
+        updateAdapter()
+    }
+
+    fun removeFilter() {
+        filtered = false
+        filterText = ""
         updateAdapter()
     }
 
     private fun updateAdapter() {
         adapterItems.clear()
-        adapterItems.addAll(limitedItems)
+        var data: List<RepositoryListItem> = allRepositoryItems
+        if (limited) {
+            data = limitData(data, limitValue)
+        }
+        if (filtered) {
+            data = filterData(data, filterText)
+        }
+        adapterItems.addAll(data)
         notifyDataSetChanged()
     }
+
+    private fun filterData(repositoriesList: List<RepositoryListItem>, text: String): List<RepositoryListItem> = repositoriesList.filter {
+        it.name.contains(text)
+    }.toMutableList()
+
+    private fun limitData(repositoriesList: List<RepositoryListItem>, max: Int) = repositoriesList.subList(0, minOf(max, repositoriesList.size))
 }

@@ -38,6 +38,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     compile "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
     compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-moshi:$retrofit_version"

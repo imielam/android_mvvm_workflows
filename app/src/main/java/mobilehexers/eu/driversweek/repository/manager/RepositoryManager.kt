@@ -4,20 +4,17 @@
 
 package mobilehexers.eu.driversweek.repository.manager
 
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import mobilehexers.eu.data.base.retrofit.RestAPI
-import mobilehexers.eu.domain.recycler.ViewType
 import mobilehexers.eu.domain.rx.SchedulerProvider
 import mobilehexers.eu.driversweek.repository.list.RepositoryListItem
 import javax.inject.Inject
 
 class RepositoryManager @Inject constructor(private val schedulerProvider: SchedulerProvider, private val api: RestAPI) {
-    fun getRepositoryList(): Observable<List<ViewType>> {
+    fun getRepositoryList(): Observable<List<RepositoryListItem>> {
 
-        val observable = Observable.create<List<ViewType>> { emitter: ObservableEmitter<List<ViewType>> ->
+        val observable = Observable.create<List<RepositoryListItem>> { emitter: ObservableEmitter<List<RepositoryListItem>> ->
             val callResponse = api.getRepositoryList("square")
             val response = callResponse.execute()
             if (response.isSuccessful) {

@@ -10,6 +10,15 @@
               android:orientation="vertical"
               tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
 
+    <EditText
+        android:id="@+id/repository_list_filter_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/filter.repository.data"
+        tools:text="@string/filter.repository.data" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
