@@ -4,6 +4,7 @@
 
 package mobilehexers.eu.data.base.retrofit
 
+import mobilehexers.eu.data.repository.GithubRepositoryDetailsResponse
 import mobilehexers.eu.data.repository.GithubRepositoryResponse
 import mobilehexers.eu.data.repository.api.GithubApi
 import okhttp3.OkHttpClient
@@ -21,4 +22,6 @@ class RestAPI {
     }
 
     fun getRepositoryList(username: String): Call<List<GithubRepositoryResponse>> = githubApi.getRepos(username)
+    fun getRepositoryDetails(username: String, repositoryName: String): Call<List<GithubRepositoryDetailsResponse>> = githubApi.getRepositoryDetails(username,
+            repositoryName)
 }
