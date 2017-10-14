@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.start
+package mobilehexers.eu.presentation.start.workflow
 
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.workflow.base.State
@@ -30,7 +30,5 @@ class StartState : State {
         currentState = StartEnum.INITIALIZED
     }
 
-    override fun toString(): String {
-        return "StartState(state=${currentState.name})"
-    }
+    override fun toString() = "StartState(state=${currentState.name})"
 }

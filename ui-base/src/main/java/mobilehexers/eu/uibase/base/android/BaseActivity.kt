@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import dagger.android.AndroidInjection
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
@@ -22,7 +21,6 @@ import kotlin.reflect.KClass
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    private val disposables: CompositeDisposable = CompositeDisposable()
     private var workflowDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,34 +34,24 @@ abstract class BaseActivity : AppCompatActivity() {
         val workflowInstance = getWorkflowInstance()
         if (savedInstanceState == null) {
             val disposable = workflowInstance.init(Consumer { state -> handleStateChange(state) },
-                    Consumer { throwable -> Log.e(logTag, throwable.toString()) }, Action { disposeWorkflow() })
+                    Consumer { throwable -> Log.e(logTag, throwable.localizedMessage) }, Action { disposeWorkflow() })
             workflowDisposable = disposable
             Log.d(logTag, "Workflow initialized: " + workflowInstance)
         }
         workflowInstance.next()
     }
 
+    protected abstract fun getWorkflowInstance(): Workflow
+    protected abstract fun handleStateChange(state: State)
+
     private fun disposeWorkflow() {
         workflowDisposable?.dispose()
         workflowDisposable = null
     }
 
-    override fun onPause() {
-        super.onPause()
-        disposeSubscriptions()
-    }
-
     override fun onBackPressed() {
         getWorkflowInstance().previous()
     }
-
-    private fun disposeSubscriptions() {
-        disposables.clear()
-    }
-
-    protected abstract fun getWorkflowInstance(): Workflow
-
-    protected abstract fun handleStateChange(state: State)
 
     protected fun startActivity(activityClass: KClass<out BaseActivity>) {
         val newIntent = Intent(baseContext, activityClass.java)
@@ -86,10 +74,6 @@ abstract class BaseActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(null)
         }
         fragmentTransaction.commit()
-    }
-
-    protected fun addDisposable(disposable: Disposable) {
-        disposables.add(disposable)
     }
 
     protected abstract fun finishWorkflow()

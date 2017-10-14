@@ -19,5 +19,5 @@
         android:textAlignment="center"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        tools:text="@string/open.repository.list" />
+        tools:text="@string/main.main.open.repository.list" />
 </LinearLayout>

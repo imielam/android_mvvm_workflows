@@ -44,7 +44,5 @@ abstract class Workflow(private var state: State, private val schedulerProvider:
         state.reset()
     }
 
-    override fun toString(): String {
-        return "Workflow(state=$state)"
-    }
+    override fun toString() = "Workflow(state=$state)"
 }

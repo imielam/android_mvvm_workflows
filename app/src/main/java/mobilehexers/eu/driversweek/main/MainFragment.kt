@@ -1,23 +1,23 @@
 package mobilehexers.eu.driversweek.main
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_main.main_container_applause
-import mobilehexers.eu.domain.workflow.main.MainEnum
-import mobilehexers.eu.domain.workflow.main.MainState
-import mobilehexers.eu.domain.workflow.main.MainWorkflow
+import kotlinx.android.synthetic.main.fragment_main.main_repository_list
+import mobilehexers.eu.presentation.main.workflow.MainEnum
+import mobilehexers.eu.presentation.main.workflow.MainState
+import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.extensions.inflate
+import mobilehexers.eu.uibase.base.android.BaseFragment
 import javax.inject.Inject
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
 
     @Inject lateinit var mainWorkflow: MainWorkflow
+
+    private val repositoryListButton by lazy { main_repository_list }
 
     companion object {
         fun newInstance(): MainFragment {
@@ -28,23 +28,14 @@ class MainFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = container?.inflate(R.layout.fragment_main)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        repositoryListButton.setOnClickListener({ showRepositoryList() })
     }
 
-    private fun initView() {
-        main_container_applause.setOnClickListener({ openApplauseWorkflow() })
-    }
-
-    private fun openApplauseWorkflow() {
+    private fun showRepositoryList() {
         mainWorkflow.next(MainState(MainEnum.REPOSITORY))
     }
 }

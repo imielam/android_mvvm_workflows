@@ -2,15 +2,12 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.main
+package mobilehexers.eu.presentation.main.workflow
 
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.workflow.base.State
 
 class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
-//
-//    var currentState = stateEnum
-//        private set
 
     override fun next() {
         when (currentState) {
@@ -24,7 +21,7 @@ class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
         if (nextState is MainState) {
             val nextStateEnum = nextState.currentState
             when (currentState) {
-                //FIXME: Check if nextStateEnum is one of type to start independent
+            //FIXME: Check if nextStateEnum is one of type to start independent
                 MainEnum.MAIN -> currentState = nextStateEnum
                 else -> println(logTag + "Unsupported state: " + currentState)
             }
@@ -45,7 +42,5 @@ class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
         currentState = MainEnum.INITIALIZED
     }
 
-    override fun toString(): String {
-        return "MainState(state=${currentState.name})"
-    }
+    override fun toString() = "MainState(state=${currentState.name})"
 }
