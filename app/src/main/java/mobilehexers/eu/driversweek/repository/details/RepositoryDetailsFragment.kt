@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_repository_detail.repository_deta
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.driversweek.repository.manager.RepositoryManager
+import mobilehexers.eu.driversweek.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Inject
 
@@ -29,6 +30,7 @@ class RepositoryDetailsFragment : Fragment() {
 
     @Inject lateinit var workflow: RepositoryWorkflow
     @Inject lateinit var repositoryManager: RepositoryManager
+    @Inject lateinit var model: RepositoryModel
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
@@ -65,7 +67,7 @@ class RepositoryDetailsFragment : Fragment() {
     }
 
     private fun initView() {
-        addDisposable(repositoryManager.getRepositoryDetail().subscribe({ next -> updateViewWith(next); showDataAndHideProgress() }))
+        addDisposable(repositoryManager.getRepositoryDetail(repositoryName = model.repositoryItemClicked.name).subscribe({ next -> updateViewWith(next); showDataAndHideProgress() }))
     }
 
     private fun updateViewWith(item: RepositoryDetailsItem) {

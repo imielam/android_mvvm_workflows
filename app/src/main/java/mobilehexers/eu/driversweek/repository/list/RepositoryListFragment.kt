@@ -18,27 +18,38 @@ import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_container
-import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_details_button
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_filter_text
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_limit
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
+import mobilehexers.eu.domain.recycler.ViewType
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.driversweek.extensions.logTag
 import mobilehexers.eu.driversweek.repository.manager.RepositoryManager
+import mobilehexers.eu.driversweek.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
+import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener
 import javax.inject.Inject
 
 class RepositoryListFragment : Fragment() {
 
     @Inject lateinit var workflow: RepositoryWorkflow
     @Inject lateinit var repositoryManager: RepositoryManager
+    @Inject lateinit var model: RepositoryModel
 
     private val disposables: CompositeDisposable = CompositeDisposable()
-    private val detailButton by lazy { repository_list_details_button }
     private val listView by lazy { repository_list_view }
     private val limitCheckBox by lazy { repository_list_limit }
     private val filterTextView by lazy { repository_list_filter_text }
+
+    private val listener = object : RecyclerViewOnItemClickListener {
+        override fun onItemClick(item: ViewType) {
+            if (item is RepositoryListItem) {
+                model.repositoryItemClicked = item
+                showDetails()
+            }
+        }
+    }
 
     companion object {
         fun newInstance(): RepositoryListFragment {
@@ -71,7 +82,6 @@ class RepositoryListFragment : Fragment() {
     }
 
     private fun initView() {
-        detailButton.setOnClickListener({ showDetails() })
         limitCheckBox.setOnClickListener({ limitRepositories(limitCheckBox.isChecked) })
         addDisposable(RxTextView.textChanges(filterTextView).filter { text -> text.isNotBlank() }.subscribe({ text -> filterRepositoryList(text.toString()) }))
         addDisposable(RxTextView.textChanges(filterTextView).filter { text -> text.isBlank() }.subscribe({ _ -> removeFilterFromRepositoryList() }))
@@ -103,7 +113,7 @@ class RepositoryListFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        val repositoryListAdapter = RepositoryListAdapter()
+        val repositoryListAdapter = RepositoryListAdapter(listener)
         listView.adapter = repositoryListAdapter
     }
 
