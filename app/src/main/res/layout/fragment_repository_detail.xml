@@ -2,19 +2,109 @@
   ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/repository_details_container"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+<RelativeLayout android:id="@+id/repository_details_container"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
 
     <TextView
         android:id="@+id/repository_details_text"
-        style="@style/TextAppearance.AppCompat.Large"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="@string/repository.details.entry.message"
         android:textAlignment="center" />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/repository_details_id_label"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/repository_details_text"
+        android:layout_toStartOf="@+id/repository_details_id_text"
+        android:text="@string/repository.details.entry.id"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/repository_details_id_text"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repository_details_text"
+        android:layout_toEndOf="@+id/repository_details_description_label"
+        android:textAlignment="center"
+        tools:text="892275" />
+
+    <TextView
+        android:id="@+id/repository_details_name_label"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/repository_details_id_label"
+        android:layout_toStartOf="@+id/repository_details_name_text"
+        android:text="@string/repository.details.entry.name"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/repository_details_name_text"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repository_details_id_text"
+        android:layout_toEndOf="@+id/repository_details_description_label"
+        android:textAlignment="center"
+        tools:text="retrofit" />
+
+    <TextView
+        android:id="@+id/repository_details_description_label"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/repository_details_name_label"
+        android:text="@string/repository.details.entry.description"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/repository_details_description_text"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/repository_details_language_text"
+        android:layout_alignTop="@+id/repository_details_description_label"
+        android:layout_toEndOf="@+id/repository_details_description_label"
+        android:textAlignment="viewStart"
+        tools:text="Type-safe HTTP client for Android and Java by Square, Inc." />
+
+    <TextView
+        android:id="@+id/repository_details_language_label"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/repository_details_description_label"
+        android:layout_toStartOf="@+id/repository_details_language_text"
+        android:text="@string/repository.details.entry.language"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/repository_details_language_text"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repository_details_description_label"
+        android:layout_toEndOf="@+id/repository_details_description_label"
+        android:textAlignment="center"
+        tools:text="Java" />
+
+</RelativeLayout>
