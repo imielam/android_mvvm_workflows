@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="details"
-            type="mobilehexers.eu.driversweek.repository.details.RepositoryDetailsItem" />
+            name="viewModel"
+            type="mobilehexers.eu.driversweek.repository.details.RepositoryDetailsViewModel" />
     </data>
 
     <LinearLayout
@@ -26,15 +26,19 @@
             android:text="@string/repository.details.entry.message"
             android:textAlignment="center" />
 
-        <include
-            android:id="@+id/repository_details_progressbar_container"
-            layout="@layout/repository_item_loading" />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:visibility="@{viewModel.progressVisibility}" />
 
         <RelativeLayout
             android:id="@+id/repository_details_item_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="@{viewModel.detailsVisibility}">
 
             <TextView
                 android:id="@+id/repository_details_id_label"
@@ -53,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/repository_details_description_label"
+                android:text="@{viewModel.details.id}"
                 android:textAlignment="center"
-                android:text="@{details.id}"
                 tools:text="892275" />
 
             <TextView
@@ -76,8 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/repository_details_id_text"
                 android:layout_toEndOf="@+id/repository_details_description_label"
+                android:text="@{viewModel.details.name}"
                 android:textAlignment="center"
-                android:text="@{details.name}"
                 tools:text="retrofit" />
 
             <TextView
@@ -99,8 +103,8 @@
                 android:layout_above="@+id/repository_details_language_text"
                 android:layout_alignTop="@+id/repository_details_description_label"
                 android:layout_toEndOf="@+id/repository_details_description_label"
+                android:text="@{viewModel.details.description}"
                 android:textAlignment="viewStart"
-                android:text="@{details.description}"
                 tools:text="Type-safe HTTP client for Android and Java by Square, Inc." />
 
             <TextView
@@ -122,8 +126,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/repository_details_description_label"
                 android:layout_toEndOf="@+id/repository_details_description_label"
+                android:text="@{viewModel.details.language}"
                 android:textAlignment="center"
-                android:text="@{details.language}"
                 tools:text="Java" />
 
         </RelativeLayout>
