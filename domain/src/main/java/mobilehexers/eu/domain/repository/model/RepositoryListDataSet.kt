@@ -2,12 +2,12 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.driversweek.repository.model
+package mobilehexers.eu.domain.repository.model
 
-import mobilehexers.eu.driversweek.repository.list.RepositoryListAdapter
-import mobilehexers.eu.driversweek.repository.list.RepositoryListItem
+import mobilehexers.eu.domain.base.model.ApplicationDataSet
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 
-class RepositoryListDataSet(private val adapter: RepositoryListAdapter) {
+class RepositoryListDataSet(private val applicationDataSet: ApplicationDataSet) {
 
     private var allRepositoryItems = mutableListOf<RepositoryListItem>()
     private var filtered = false
@@ -17,7 +17,7 @@ class RepositoryListDataSet(private val adapter: RepositoryListAdapter) {
 
     fun addRepositories(repositories: List<RepositoryListItem>) {
         allRepositoryItems.addAll(repositories)
-        adapter.updateWith(getData())
+        applicationDataSet.updateWith(getData())
     }
 
     private fun getData(): List<RepositoryListItem> {
@@ -34,25 +34,25 @@ class RepositoryListDataSet(private val adapter: RepositoryListAdapter) {
     fun limitRepositoriesTo(max: Int) {
         limited = true
         limitValue = max
-        adapter.updateWith(getData())
+        applicationDataSet.updateWith(getData())
     }
 
     fun removeLimit() {
         limited = false
         limitValue = allRepositoryItems.size
-        adapter.updateWith(getData())
+        applicationDataSet.updateWith(getData())
     }
 
     fun filterRepositories(text: String) {
         filtered = true
         filterText = text
-        adapter.updateWith(getData())
+        applicationDataSet.updateWith(getData())
     }
 
     fun removeFilter() {
         filtered = false
         filterText = ""
-        adapter.updateWith(getData())
+        applicationDataSet.updateWith(getData())
     }
 
     private fun filterData(repositoriesList: List<RepositoryListItem>, text: String): List<RepositoryListItem> = repositoriesList.filter {

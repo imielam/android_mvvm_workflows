@@ -8,11 +8,12 @@ import android.databinding.ObservableField
 import android.databinding.ObservableInt
 import android.util.Log
 import android.view.View
-import mobilehexers.eu.domain.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.base.di.FragmentSingleton
+import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
 import mobilehexers.eu.driversweek.extensions.logTag
 import mobilehexers.eu.driversweek.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
-import mobilehexers.eu.uibase.base.di.annotation.FragmentSingleton
 import javax.inject.Inject
 
 @FragmentSingleton

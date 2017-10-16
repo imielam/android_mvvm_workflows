@@ -4,8 +4,8 @@
 
 package mobilehexers.eu.presentation.main.workflow
 
-import mobilehexers.eu.domain.rx.SchedulerProvider
-import mobilehexers.eu.domain.workflow.base.Workflow
+import mobilehexers.eu.domain.base.rx.SchedulerProvider
+import mobilehexers.eu.domain.base.workflow.Workflow
 import javax.inject.Inject
 
 class MainWorkflow @Inject constructor(schedulerProvider: SchedulerProvider) : Workflow(MainState(), schedulerProvider)

@@ -5,12 +5,12 @@ import android.util.Log
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
-import mobilehexers.eu.domain.workflow.base.State
-import mobilehexers.eu.domain.workflow.base.Workflow
+import mobilehexers.eu.domain.base.workflow.State
+import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.driversweek.repository.RepositoryActivity
 import mobilehexers.eu.presentation.main.workflow.MainEnum
 import mobilehexers.eu.presentation.main.workflow.MainState
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
-import mobilehexers.eu.driversweek.repository.RepositoryActivity
 import mobilehexers.eu.uibase.base.android.BaseActivity
 import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject

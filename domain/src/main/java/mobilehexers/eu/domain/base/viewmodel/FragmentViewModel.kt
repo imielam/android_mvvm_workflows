@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.viewmodel
+package mobilehexers.eu.domain.base.viewmodel
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

@@ -13,8 +13,7 @@ import dagger.multibindings.IntoMap
 import mobilehexers.eu.driversweek.main.MainActivity
 import mobilehexers.eu.driversweek.main.dependencyinjection.MainActivitySubcomponent
 
-@Module (subcomponents = arrayOf(MainActivitySubcomponent::class))
-abstract class MainActivityModule {
+@Module(subcomponents = arrayOf(MainActivitySubcomponent::class)) abstract class MainActivityModule {
 
     @Binds
     @IntoMap

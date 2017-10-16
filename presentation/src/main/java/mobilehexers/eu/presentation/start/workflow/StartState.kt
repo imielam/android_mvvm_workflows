@@ -4,8 +4,8 @@
 
 package mobilehexers.eu.presentation.start.workflow
 
+import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.extensions.logTag
-import mobilehexers.eu.domain.workflow.base.State
 
 class StartState : State {
     var currentState = StartEnum.INITIALIZED

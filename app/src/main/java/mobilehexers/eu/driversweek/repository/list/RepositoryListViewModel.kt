@@ -6,11 +6,12 @@ package mobilehexers.eu.driversweek.repository.list
 
 import android.util.Log
 import io.reactivex.Observable
-import mobilehexers.eu.domain.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.base.di.FragmentSingleton
+import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.driversweek.extensions.logTag
 import mobilehexers.eu.driversweek.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
-import mobilehexers.eu.uibase.base.di.annotation.FragmentSingleton
 import javax.inject.Inject
 
 @FragmentSingleton

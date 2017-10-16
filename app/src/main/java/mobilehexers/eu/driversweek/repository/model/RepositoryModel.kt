@@ -5,13 +5,15 @@
 package mobilehexers.eu.driversweek.repository.model
 
 import io.reactivex.Observable
-import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsItem
-import mobilehexers.eu.driversweek.repository.list.RepositoryListAdapter
-import mobilehexers.eu.driversweek.repository.list.RepositoryListItem
-import mobilehexers.eu.driversweek.repository.manager.RepositoryManager
-import mobilehexers.eu.uibase.base.di.annotation.ActivitySingleton
+import mobilehexers.eu.data.repository.manager.RepositoryManager
+import mobilehexers.eu.domain.base.di.ActivitySingleton
+import mobilehexers.eu.domain.base.model.ApplicationDataSet
+import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
+import mobilehexers.eu.domain.repository.model.RepositoryListDataSet
 import javax.inject.Inject
 
+//FIXME: Move to domain after add of abstraction layer to RepositoryManager
 @ActivitySingleton
 class RepositoryModel @Inject constructor() {
 
@@ -20,5 +22,5 @@ class RepositoryModel @Inject constructor() {
 
     fun getRepositoryDetails(): Observable<RepositoryDetailsItem> = repositoryManager.getRepositoryDetail(repositoryName = repositoryItemClicked.name)
     fun getRepositoryList() = repositoryManager.getRepositoryList()
-    fun getNewRepositoryListDataSet(repositoryListAdapter: RepositoryListAdapter): RepositoryListDataSet = RepositoryListDataSet(repositoryListAdapter)
+    fun getNewRepositoryListDataSet(applicationDataSet: ApplicationDataSet): RepositoryListDataSet = RepositoryListDataSet(applicationDataSet)
 }

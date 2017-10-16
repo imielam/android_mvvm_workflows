@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.uibase.base.di.annotation
+package mobilehexers.eu.domain.base.di
 
 import javax.inject.Scope
 

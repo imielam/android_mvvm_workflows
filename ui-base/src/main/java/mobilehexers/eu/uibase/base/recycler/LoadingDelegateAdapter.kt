@@ -6,7 +6,7 @@ package mobilehexers.eu.uibase.base.recycler
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import mobilehexers.eu.domain.recycler.ViewType
+import mobilehexers.eu.domain.base.recycler.ViewType
 import mobilehexers.eu.ui_base.R
 import mobilehexers.eu.uibase.extensions.inflate
 

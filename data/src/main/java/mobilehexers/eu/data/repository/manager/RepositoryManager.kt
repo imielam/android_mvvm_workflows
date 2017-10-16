@@ -2,18 +2,22 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.driversweek.repository.manager
+package mobilehexers.eu.data.repository.manager
 
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import mobilehexers.eu.data.base.retrofit.RestAPI
 import mobilehexers.eu.data.repository.GithubRepositoryDetailsResponse
-import mobilehexers.eu.domain.rx.SchedulerProvider
-import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsItem
-import mobilehexers.eu.driversweek.repository.list.RepositoryListItem
+import mobilehexers.eu.domain.base.di.ActivitySingleton
+import mobilehexers.eu.domain.base.rx.SchedulerProvider
+import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import javax.inject.Inject
 
+//FIXME: Add Abstraction layer
+@ActivitySingleton
 class RepositoryManager @Inject constructor(private val schedulerProvider: SchedulerProvider, private val api: RestAPI) {
+
     private val defaultUserName = "square"
     private val defaultRepositoryName = "retrofit"
     fun getRepositoryList(username: String = defaultUserName): Observable<List<RepositoryListItem>> {
@@ -57,11 +61,4 @@ class RepositoryManager @Inject constructor(private val schedulerProvider: Sched
         }
         return observable.observeOn(schedulerProvider.mainThread).subscribeOn(schedulerProvider.ioThread)
     }
-
-    private fun createMockRepositoryList() = (1..10).map {
-        RepositoryListItem("Github Repository: " + it)
-
-    }
-
-    private fun createMockedRepositoryDetailsItem() = RepositoryDetailsItem("01", "retrofit", "Type-safe HTTP client for Android and Java by Square, Inc.", "Java")
 }

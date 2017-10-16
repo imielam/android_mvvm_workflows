@@ -6,8 +6,8 @@ package mobilehexers.eu.driversweek.start.di
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
+import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.driversweek.start.StartActivity
-import mobilehexers.eu.uibase.base.di.annotation.ActivitySingleton
 
 @ActivitySingleton
 @Subcomponent()

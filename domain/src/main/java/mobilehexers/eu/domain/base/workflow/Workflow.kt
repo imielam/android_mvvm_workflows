@@ -2,14 +2,14 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.base
+package mobilehexers.eu.domain.base.workflow
 
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
 import io.reactivex.processors.ReplayProcessor
+import mobilehexers.eu.domain.base.rx.SchedulerProvider
 import mobilehexers.eu.domain.extensions.logTag
-import mobilehexers.eu.domain.rx.SchedulerProvider
 
 abstract class Workflow(private var state: State, private val schedulerProvider: SchedulerProvider) {
 
@@ -23,7 +23,6 @@ abstract class Workflow(private var state: State, private val schedulerProvider:
         state.next()
         emitState()
     }
-
 
     fun next(nextState: State) {
         state.next(nextState)

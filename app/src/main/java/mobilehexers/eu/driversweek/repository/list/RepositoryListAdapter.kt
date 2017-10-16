@@ -7,14 +7,14 @@ package mobilehexers.eu.driversweek.repository.list
 import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import mobilehexers.eu.domain.recycler.ViewType
-import mobilehexers.eu.driversweek.repository.model.RepositoryListDataSet
-import mobilehexers.eu.uibase.base.recycler.AdapterConstants
+import mobilehexers.eu.domain.base.model.ApplicationDataSet
+import mobilehexers.eu.domain.base.recycler.AdapterConstants
+import mobilehexers.eu.domain.base.recycler.ViewType
 import mobilehexers.eu.uibase.base.recycler.LoadingDelegateAdapter
 import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener
 import mobilehexers.eu.uibase.base.recycler.ViewTypeDelegateAdapter
 
-class RepositoryListAdapter(listener: RecyclerViewOnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepositoryListAdapter(listener: RecyclerViewOnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ApplicationDataSet {
 
     private var adapterItems = mutableListOf<ViewType>()
     private var delegateAdapters = SparseArrayCompat<ViewTypeDelegateAdapter>()
@@ -40,10 +40,9 @@ class RepositoryListAdapter(listener: RecyclerViewOnItemClickListener) : Recycle
 
     override fun getItemViewType(position: Int) = this.adapterItems[position].getViewType()
 
-    fun updateWith(data: List<RepositoryListItem>) {
+    override fun updateWith(data: List<ViewType>) {
         adapterItems.clear()
         adapterItems.addAll(data)
         notifyDataSetChanged()
     }
-
 }
