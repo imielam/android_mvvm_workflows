@@ -15,7 +15,6 @@ import javax.inject.Inject
 class RepositoryDetailsFragment : BaseFragment() {
 
     @Inject lateinit var viewModel: RepositoryDetailsViewModel
-    private lateinit var binding: FragmentRepositoryDetailBinding
 
     companion object {
         fun newInstance(): RepositoryDetailsFragment {
@@ -28,9 +27,9 @@ class RepositoryDetailsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentRepositoryDetailBinding.inflate(inflater)
-        binding.viewModel = viewModel
-        return binding.root
+        val detailBinding = FragmentRepositoryDetailBinding.inflate(inflater)
+        detailBinding.viewModel = viewModel
+        return detailBinding.root
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

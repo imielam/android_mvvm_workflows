@@ -3,7 +3,7 @@
 
     <string name="main.main.open.repository.list">Open Repository List Screen</string>
 
-    <string name="repository.list.limit.data">Limit dataset to 20 positions</string>
+    <string name="repository.list.limit.data">Limit dataSet to 20 positions</string>
     <string name="repository.list.filter.data">Start writing to filter data</string>
 
     <string name="repository.details.entry.message">Repository details</string>
