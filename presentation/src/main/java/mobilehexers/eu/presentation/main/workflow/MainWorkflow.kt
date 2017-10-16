@@ -2,10 +2,10 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.start
+package mobilehexers.eu.presentation.main.workflow
 
 import mobilehexers.eu.domain.rx.SchedulerProvider
 import mobilehexers.eu.domain.workflow.base.Workflow
 import javax.inject.Inject
 
-class StartWorkflow @Inject constructor(schedulerProvider: SchedulerProvider) : Workflow(StartState(), schedulerProvider)
+class MainWorkflow @Inject constructor(schedulerProvider: SchedulerProvider) : Workflow(MainState(), schedulerProvider)

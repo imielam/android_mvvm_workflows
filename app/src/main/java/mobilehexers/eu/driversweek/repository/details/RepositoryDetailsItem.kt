@@ -4,4 +4,6 @@
 
 package mobilehexers.eu.driversweek.repository.details
 
-data class RepositoryDetailsItem(val id: String, val name: String, val description: String, val language: String)
+data class RepositoryDetailsItem(val id: String, val name: String, val description: String?, val language: String?) {
+    constructor() : this("","","","")
+}
