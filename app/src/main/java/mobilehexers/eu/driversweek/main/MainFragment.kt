@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_main.main_repository_list
+import mobilehexers.eu.driversweek.R
+import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.presentation.main.workflow.MainEnum
 import mobilehexers.eu.presentation.main.workflow.MainState
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
-import mobilehexers.eu.driversweek.R
-import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.uibase.base.android.BaseFragment
 import javax.inject.Inject
 

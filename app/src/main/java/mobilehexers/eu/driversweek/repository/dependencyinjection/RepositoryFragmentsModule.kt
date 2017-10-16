@@ -7,8 +7,4 @@ package mobilehexers.eu.driversweek.repository.dependencyinjection
 import dagger.Module
 
 @Module
-class RepositoryFragmentsModule {
-
-//    @Provides
-    //    @ActivitySingleton internal fun provideRepositoryManagert(): RepositoryManager = RepositoryManager(schedulerProvider)
-}
+class RepositoryFragmentsModule

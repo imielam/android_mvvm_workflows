@@ -10,13 +10,13 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
-import mobilehexers.eu.domain.rx.SchedulerProvider
-import mobilehexers.eu.presentation.main.workflow.MainWorkflow
-import mobilehexers.eu.presentation.start.workflow.StartWorkflow
+import mobilehexers.eu.domain.base.rx.SchedulerProvider
 import mobilehexers.eu.driversweek.base.android.BaseApplication
 import mobilehexers.eu.driversweek.repository.dependencyinjection.RepositoryActivityModule
 import mobilehexers.eu.driversweek.start.di.StartActivityModule
+import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
+import mobilehexers.eu.presentation.start.workflow.StartWorkflow
 import javax.inject.Singleton
 
 @Singleton

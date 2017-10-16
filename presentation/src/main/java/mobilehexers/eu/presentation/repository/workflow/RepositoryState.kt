@@ -4,8 +4,8 @@
 
 package mobilehexers.eu.presentation.repository.workflow
 
+import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.extensions.logTag
-import mobilehexers.eu.domain.workflow.base.State
 
 class RepositoryState : State {
     var currentState = RepositoryEnum.INITIALIZED

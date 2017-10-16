@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.rx
+package mobilehexers.eu.domain.base.rx
 
 import io.reactivex.Scheduler
 

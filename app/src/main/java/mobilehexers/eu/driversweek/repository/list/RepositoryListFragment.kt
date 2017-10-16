@@ -15,7 +15,8 @@ import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_filter_text
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_limit
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
-import mobilehexers.eu.domain.recycler.ViewType
+import mobilehexers.eu.domain.base.recycler.ViewType
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.driversweek.databinding.FragmentRepositoryListBinding
 import mobilehexers.eu.uibase.base.android.BaseFragment
 import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener

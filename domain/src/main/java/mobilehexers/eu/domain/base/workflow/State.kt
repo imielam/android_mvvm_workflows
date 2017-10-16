@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.workflow.base
+package mobilehexers.eu.domain.base.workflow
 
 interface State {
     fun reset()

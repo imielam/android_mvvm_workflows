@@ -13,8 +13,8 @@ import dagger.android.AndroidInjection
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
-import mobilehexers.eu.domain.workflow.base.State
-import mobilehexers.eu.domain.workflow.base.Workflow
+import mobilehexers.eu.domain.base.workflow.State
+import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.ui_base.R
 import mobilehexers.eu.uibase.extensions.logTag
 import kotlin.reflect.KClass
