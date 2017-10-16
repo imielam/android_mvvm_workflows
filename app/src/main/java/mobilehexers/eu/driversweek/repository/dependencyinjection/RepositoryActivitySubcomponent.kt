@@ -6,8 +6,8 @@ package mobilehexers.eu.driversweek.repository.dependencyinjection
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
+import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.driversweek.repository.RepositoryActivity
-import mobilehexers.eu.uibase.base.di.annotation.ActivitySingleton
 
 @ActivitySingleton
 @Subcomponent(modules = arrayOf(RepositoryFragmentsProvider::class))

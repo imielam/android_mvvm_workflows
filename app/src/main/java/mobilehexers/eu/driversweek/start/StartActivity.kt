@@ -5,12 +5,11 @@
 package mobilehexers.eu.driversweek.start
 
 import android.util.Log
-import mobilehexers.eu.domain.workflow.base.State
-import mobilehexers.eu.domain.workflow.start.StartEnum
-import mobilehexers.eu.domain.workflow.start.StartState
-import mobilehexers.eu.domain.workflow.start.StartWorkflow
+import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.driversweek.main.MainActivity
-import mobilehexers.eu.driversweek.repository.RepositoryActivity
+import mobilehexers.eu.presentation.start.workflow.StartEnum
+import mobilehexers.eu.presentation.start.workflow.StartState
+import mobilehexers.eu.presentation.start.workflow.StartWorkflow
 import mobilehexers.eu.uibase.base.android.BaseActivity
 import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
@@ -35,7 +34,7 @@ class StartActivity : BaseActivity() {
 
     override fun finishWorkflow() {
         workflow.end()
-        startActivity(RepositoryActivity::class)
+        startActivity(MainActivity::class)
         finish()
     }
 }

@@ -9,10 +9,10 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import mobilehexers.eu.data.base.retrofit.RestAPI
-import mobilehexers.eu.domain.rx.SchedulerProvider
-import mobilehexers.eu.domain.workflow.main.MainWorkflow
-import mobilehexers.eu.domain.workflow.start.StartWorkflow
+import mobilehexers.eu.domain.base.rx.SchedulerProvider
+import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
+import mobilehexers.eu.presentation.start.workflow.StartWorkflow
 import mobilehexers.eu.uibase.base.rx.AndroidSchedulerProvider
 import javax.inject.Singleton
 

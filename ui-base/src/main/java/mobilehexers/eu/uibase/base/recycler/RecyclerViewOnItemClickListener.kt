@@ -4,7 +4,7 @@
 
 package mobilehexers.eu.uibase.base.recycler
 
-import mobilehexers.eu.domain.recycler.ViewType
+import mobilehexers.eu.domain.base.recycler.ViewType
 
 interface RecyclerViewOnItemClickListener {
     fun onItemClick(item: ViewType)
