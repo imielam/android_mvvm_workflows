@@ -16,6 +16,8 @@ import javax.inject.Inject
 @FragmentSingleton
 class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
 
+    private val DEFAULT_REPOSITORY_LIMIT = 20
+
     @Inject lateinit var model: RepositoryModel
     @Inject lateinit var workflow: RepositoryWorkflow
 
@@ -23,11 +25,11 @@ class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
     lateinit var limitObservable: Observable<Boolean>
     lateinit var listAdapter: RepositoryListAdapter
 
-    private val DEFAULT_REPOSITORY_LIMIT = 20
+    private val dataSet by lazy { model.getNewRepositoryListDataSet(listAdapter) }
 
     override fun onViewCreated() {
         bindRestView()
-        addDisposable(model.getRepositoryList().subscribe({ next -> listAdapter.addRepositories(next) }, { e -> handleError(e) }))
+        addDisposable(model.getRepositoryList().subscribe({ next -> dataSet.addRepositories(next) }, { e -> handleError(e) }))
     }
 
     private fun bindRestView() {
@@ -38,17 +40,16 @@ class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
 
     private fun removeFilterFromRepositoryList() {
         Log.v(logTag, "Text empty. Remove filter")
-        listAdapter.removeFilter()
+        dataSet.removeFilter()
     }
 
     private fun filterRepositoryList(text: String) {
         Log.v(logTag, "Text changed. Current text: " + text)
-        listAdapter.filterRepositories(text)
+        dataSet.filterRepositories(text)
     }
 
     private fun handleError(e: Throwable) {
         Log.e(logTag, e.localizedMessage)
-        //        Snackbar.make(repository_list_container, e.localizedMessage, Snackbar.LENGTH_SHORT).show()
     }
 
     fun repositoryItemClicked(item: RepositoryListItem) {
@@ -63,9 +64,9 @@ class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
     private fun limitRepositories(selected: Boolean) {
         Log.v(logTag, "Checkbox clicked. Selection: " + selected)
         if (selected) {
-            listAdapter.limitRepositoriesTo(DEFAULT_REPOSITORY_LIMIT)
+            dataSet.limitRepositoriesTo(DEFAULT_REPOSITORY_LIMIT)
         } else {
-            listAdapter.removeLimit()
+            dataSet.removeLimit()
         }
     }
 }

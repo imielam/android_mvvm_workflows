@@ -6,6 +6,7 @@ package mobilehexers.eu.driversweek.repository.model
 
 import io.reactivex.Observable
 import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsItem
+import mobilehexers.eu.driversweek.repository.list.RepositoryListAdapter
 import mobilehexers.eu.driversweek.repository.list.RepositoryListItem
 import mobilehexers.eu.driversweek.repository.manager.RepositoryManager
 import mobilehexers.eu.uibase.base.di.annotation.ActivitySingleton
@@ -19,4 +20,5 @@ class RepositoryModel @Inject constructor() {
 
     fun getRepositoryDetails(): Observable<RepositoryDetailsItem> = repositoryManager.getRepositoryDetail(repositoryName = repositoryItemClicked.name)
     fun getRepositoryList() = repositoryManager.getRepositoryList()
+    fun getNewRepositoryListDataSet(repositoryListAdapter: RepositoryListAdapter): RepositoryListDataSet = RepositoryListDataSet(repositoryListAdapter)
 }
