@@ -18,4 +18,5 @@ class RepositoryModel @Inject constructor() {
     lateinit var repositoryItemClicked: RepositoryListItem
 
     fun getRepositoryDetails(): Observable<RepositoryDetailsItem> = repositoryManager.getRepositoryDetail(repositoryName = repositoryItemClicked.name)
+    fun getRepositoryList() = repositoryManager.getRepositoryList()
 }
