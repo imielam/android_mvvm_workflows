@@ -15,8 +15,8 @@ import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.ui_base.R
-import mobilehexers.eu.uibase.extensions.logTag
 import kotlin.reflect.KClass
 
 abstract class BaseActivity : AppCompatActivity() {

@@ -10,8 +10,8 @@ import android.util.Log
 import android.view.View
 import mobilehexers.eu.domain.base.di.FragmentSingleton
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
-import mobilehexers.eu.driversweek.extensions.logTag
 import mobilehexers.eu.driversweek.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Inject

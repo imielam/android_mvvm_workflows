@@ -7,12 +7,12 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.driversweek.repository.RepositoryActivity
 import mobilehexers.eu.presentation.main.workflow.MainEnum
 import mobilehexers.eu.presentation.main.workflow.MainState
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.uibase.base.android.BaseActivity
-import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), HasSupportFragmentInjector {

@@ -11,14 +11,13 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
-import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsFragment
 import mobilehexers.eu.driversweek.repository.list.RepositoryListFragment
 import mobilehexers.eu.presentation.repository.workflow.RepositoryEnum
 import mobilehexers.eu.presentation.repository.workflow.RepositoryState
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import mobilehexers.eu.uibase.base.android.BaseActivity
-import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
 
 class RepositoryActivity : BaseActivity(), HasSupportFragmentInjector {

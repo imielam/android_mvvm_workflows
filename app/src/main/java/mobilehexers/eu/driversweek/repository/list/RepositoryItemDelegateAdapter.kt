@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.item_repository_list.view.repository_list_
 import mobilehexers.eu.domain.base.recycler.ViewType
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.driversweek.R
-import mobilehexers.eu.driversweek.extensions.inflate
 import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener
 import mobilehexers.eu.uibase.base.recycler.ViewTypeDelegateAdapter
+import mobilehexers.eu.uibase.extensions.inflate
 
 class RepositoryItemDelegateAdapter : ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = RepositoryItemViewHolder(parent)
