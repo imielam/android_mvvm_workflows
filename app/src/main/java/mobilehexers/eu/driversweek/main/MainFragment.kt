@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_main.main_repository_list
+import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.presentation.main.workflow.MainEnum
 import mobilehexers.eu.presentation.main.workflow.MainState
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 class MainFragment : BaseFragment() {
 
-    @Inject lateinit var mainWorkflow: MainWorkflow
+    @Inject lateinit var workflow: Workflow
 
     private val repositoryListButton by lazy { main_repository_list }
 
@@ -36,6 +37,6 @@ class MainFragment : BaseFragment() {
     }
 
     private fun showRepositoryList() {
-        mainWorkflow.next(MainState(MainEnum.REPOSITORY))
+        workflow.next(MainState(MainEnum.REPOSITORY))
     }
 }

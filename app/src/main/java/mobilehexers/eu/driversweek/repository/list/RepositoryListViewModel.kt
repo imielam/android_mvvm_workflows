@@ -6,21 +6,16 @@ package mobilehexers.eu.driversweek.repository.list
 
 import android.util.Log
 import io.reactivex.Observable
-import mobilehexers.eu.domain.base.di.FragmentSingleton
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
+import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.driversweek.repository.model.RepositoryModel
-import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import javax.inject.Inject
 
-@FragmentSingleton
-class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
+class RepositoryListViewModel @Inject constructor(private val workflow: Workflow, private val model: RepositoryModel) : FragmentViewModel() {
 
     private val DEFAULT_REPOSITORY_LIMIT = 20
-
-    @Inject lateinit var model: RepositoryModel
-    @Inject lateinit var workflow: RepositoryWorkflow
 
     lateinit var filterObservable: Observable<String>
     lateinit var limitObservable: Observable<Boolean>
@@ -54,7 +49,7 @@ class RepositoryListViewModel @Inject constructor() : FragmentViewModel() {
     }
 
     fun repositoryItemClicked(item: RepositoryListItem) {
-        model.repositoryItemClicked = item
+        model.setRepositoryItemClicked(item)
         showDetails()
     }
 

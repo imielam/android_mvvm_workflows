@@ -4,21 +4,23 @@
 
 package mobilehexers.eu.driversweek.repository.dependencyinjection
 
-import android.app.Activity
-import dagger.Binds
 import dagger.Module
-import dagger.android.ActivityKey
-import dagger.android.AndroidInjector
-import dagger.multibindings.IntoMap
+import dagger.Provides
+import mobilehexers.eu.data.repository.api.RepositoryRestAPI
+import mobilehexers.eu.data.repository.manager.RepositoryManager
+import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
-import mobilehexers.eu.driversweek.repository.RepositoryActivity
+import mobilehexers.eu.driversweek.repository.model.RepositoryModel
+import mobilehexers.eu.driversweek.repository.model.RepositoryModelImpl
 
-@Module(subcomponents = arrayOf(RepositoryActivitySubcomponent::class)) abstract class RepositoryActivityModule {
+@Module
+class RepositoryActivityModule {
 
-    @Binds
-    @IntoMap
-    @ActivityKey(RepositoryActivity::class) internal abstract fun bindAndroidInjectorFactory(
-            builder: RepositoryActivitySubcomponent.Builder): AndroidInjector.Factory<out Activity>
+    @Provides
+    @ActivitySingleton
+    internal fun provideRepositoryModel(repositoryManager: RepositoryManager): RepositoryModel = RepositoryModelImpl(repositoryManager)
 
-    abstract val schedulerProvider: SchedulerProvider
+    @Provides
+    @ActivitySingleton
+    internal fun getRepositoryManager(schedulerProvider: SchedulerProvider, restAPI: RepositoryRestAPI): RepositoryManager = RepositoryManager(schedulerProvider, restAPI)
 }

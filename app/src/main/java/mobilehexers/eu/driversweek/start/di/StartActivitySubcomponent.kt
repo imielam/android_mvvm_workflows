@@ -10,7 +10,7 @@ import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.driversweek.start.StartActivity
 
 @ActivitySingleton
-@Subcomponent()
+@Subcomponent
 interface StartActivitySubcomponent : AndroidInjector<StartActivity> {
 
     @Subcomponent.Builder abstract class Builder : AndroidInjector.Builder<StartActivity>()

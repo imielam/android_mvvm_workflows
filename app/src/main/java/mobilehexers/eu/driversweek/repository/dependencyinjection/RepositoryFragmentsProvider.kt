@@ -12,8 +12,8 @@ import mobilehexers.eu.driversweek.repository.list.RepositoryListFragment
 
 @Module abstract class RepositoryFragmentsProvider {
     @FragmentSingleton
-    @ContributesAndroidInjector(modules = arrayOf(RepositoryFragmentsModule::class)) abstract fun contributeListFragmentInjector(): RepositoryListFragment
+    @ContributesAndroidInjector(modules = arrayOf(RepositoryListFragmentsModule::class)) abstract fun contributeListFragmentInjector(): RepositoryListFragment
 
     @FragmentSingleton
-    @ContributesAndroidInjector(modules = arrayOf(RepositoryFragmentsModule::class)) abstract fun contributeDetailsragmentInjector(): RepositoryDetailsFragment
+    @ContributesAndroidInjector(modules = arrayOf(RepositoryDetailsFragmentsModule::class)) abstract fun contributeDetailsragmentInjector(): RepositoryDetailsFragment
 }

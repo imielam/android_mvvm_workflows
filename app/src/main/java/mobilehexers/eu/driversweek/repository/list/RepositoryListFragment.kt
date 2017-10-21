@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_f
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_limit
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
 import mobilehexers.eu.domain.base.recycler.ViewType
+import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.driversweek.databinding.FragmentRepositoryListBinding
 import mobilehexers.eu.uibase.base.android.BaseFragment
@@ -24,7 +25,7 @@ import javax.inject.Inject
 
 class RepositoryListFragment : BaseFragment() {
 
-    @Inject lateinit var viewModel: RepositoryListViewModel
+    @Inject lateinit var viewModel: FragmentViewModel
 
     private val editTextObservable: Observable<String> by lazy { RxTextView.textChanges(repository_list_filter_text).map { data -> data.toString() } }
     private val checkBoxObservable: Observable<Boolean> by lazy { RxView.clicks(repository_list_limit).map { repository_list_limit.isChecked } }
@@ -35,7 +36,7 @@ class RepositoryListFragment : BaseFragment() {
     private val listener = object : RecyclerViewOnItemClickListener {
         override fun onItemClick(item: ViewType) {
             if (item is RepositoryListItem) {
-                viewModel.repositoryItemClicked(item)
+                (viewModel as RepositoryListViewModel).repositoryItemClicked(item)
             }
         }
     }
@@ -51,7 +52,7 @@ class RepositoryListFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentRepositoryListBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
+        binding.viewModel = viewModel as RepositoryListViewModel
         return binding.root
     }
 
@@ -63,9 +64,10 @@ class RepositoryListFragment : BaseFragment() {
     }
 
     private fun initViewModel() {
-        viewModel.listAdapter = listAdapter
-        viewModel.filterObservable = editTextObservable
-        viewModel.limitObservable = checkBoxObservable
+        val repositoryListViewModel = viewModel as RepositoryListViewModel
+        repositoryListViewModel.listAdapter = listAdapter
+        repositoryListViewModel.filterObservable = editTextObservable
+        repositoryListViewModel.limitObservable = checkBoxObservable
     }
 
     private fun initRecyclerView() {

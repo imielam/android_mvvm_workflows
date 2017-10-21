@@ -6,8 +6,8 @@ package mobilehexers.eu.data.repository.manager
 
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
-import mobilehexers.eu.data.base.retrofit.RestAPI
-import mobilehexers.eu.data.repository.GithubRepositoryDetailsResponse
+import mobilehexers.eu.data.repository.api.RepositoryRestAPI
+import mobilehexers.eu.data.repository.response.GithubRepositoryDetailsResponse
 import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
 import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 //FIXME: Add Abstraction layer
 @ActivitySingleton
-class RepositoryManager @Inject constructor(private val schedulerProvider: SchedulerProvider, private val api: RestAPI) {
+class RepositoryManager @Inject constructor(private val schedulerProvider: SchedulerProvider, private val api: RepositoryRestAPI) {
 
     private val defaultUserName = "square"
     private val defaultRepositoryName = "retrofit"
