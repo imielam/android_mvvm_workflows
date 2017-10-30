@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.driversweek.repository.model
+package mobilehexers.eu.domain.repository.model
 
 import io.reactivex.Observable
 import mobilehexers.eu.domain.base.model.ApplicationDataSet

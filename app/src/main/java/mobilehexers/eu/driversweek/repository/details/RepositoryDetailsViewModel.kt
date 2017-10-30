@@ -11,7 +11,7 @@ import android.view.View
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
-import mobilehexers.eu.driversweek.repository.model.RepositoryModel
+import mobilehexers.eu.domain.repository.model.RepositoryModel
 import javax.inject.Inject
 
 class RepositoryDetailsViewModel @Inject constructor(private val model: RepositoryModel) : FragmentViewModel() {

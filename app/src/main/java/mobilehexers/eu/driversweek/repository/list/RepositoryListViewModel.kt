@@ -10,7 +10,7 @@ import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
-import mobilehexers.eu.driversweek.repository.model.RepositoryModel
+import mobilehexers.eu.domain.repository.model.RepositoryModel
 import javax.inject.Inject
 
 class RepositoryListViewModel @Inject constructor(private val workflow: Workflow, private val model: RepositoryModel) : FragmentViewModel() {

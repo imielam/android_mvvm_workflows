@@ -10,7 +10,7 @@ import mobilehexers.eu.domain.base.di.FragmentSingleton
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.driversweek.repository.list.RepositoryListViewModel
-import mobilehexers.eu.driversweek.repository.model.RepositoryModel
+import mobilehexers.eu.domain.repository.model.RepositoryModel
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 
 @Module
