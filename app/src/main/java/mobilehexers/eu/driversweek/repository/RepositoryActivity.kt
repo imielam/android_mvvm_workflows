@@ -12,6 +12,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
+import mobilehexers.eu.driversweek.main.MainActivity
 import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsFragment
 import mobilehexers.eu.driversweek.repository.list.RepositoryListFragment
 import mobilehexers.eu.presentation.repository.workflow.RepositoryEnum
