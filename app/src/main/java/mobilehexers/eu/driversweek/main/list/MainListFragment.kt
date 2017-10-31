@@ -14,7 +14,7 @@ import mobilehexers.eu.uibase.base.android.BaseFragment
 import javax.inject.Inject
 
 class MainListFragment : BaseFragment() {
-    @Inject lateinit var viewModel: FragmentViewModel
+    @Inject lateinit override var viewModel: FragmentViewModel
 
     companion object {
         fun newInstance(): MainListFragment {
@@ -30,5 +30,4 @@ class MainListFragment : BaseFragment() {
         binding.viewModel = viewModel as MainListViewModel
         return binding.root
     }
-
 }

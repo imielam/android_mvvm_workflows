@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 class RepositoryListFragment : BaseFragment() {
 
-    @Inject lateinit var viewModel: FragmentViewModel
+    @Inject lateinit override var viewModel: FragmentViewModel
 
     private val editTextObservable: Observable<String> by lazy { RxTextView.textChanges(repository_list_filter_text).map { data -> data.toString() } }
     private val checkBoxObservable: Observable<Boolean> by lazy { RxView.clicks(repository_list_limit).map { repository_list_limit.isChecked } }
@@ -60,7 +60,6 @@ class RepositoryListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initViewModel()
-        viewModel.onViewCreated()
     }
 
     private fun initViewModel() {
