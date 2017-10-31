@@ -8,20 +8,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_main.main_repository_list
-import mobilehexers.eu.domain.base.workflow.Workflow
-import mobilehexers.eu.driversweek.R
-import mobilehexers.eu.presentation.main.workflow.MainEnum
-import mobilehexers.eu.presentation.main.workflow.MainState
+import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
+import mobilehexers.eu.driversweek.databinding.FragmentMainListBinding
 import mobilehexers.eu.uibase.base.android.BaseFragment
-import mobilehexers.eu.uibase.extensions.inflate
 import javax.inject.Inject
 
 class MainListFragment : BaseFragment() {
-
-    @Inject lateinit var workflow: Workflow
-
-    private val repositoryListButton by lazy { main_repository_list }
+    @Inject lateinit var viewModel: FragmentViewModel
 
     companion object {
         fun newInstance(): MainListFragment {
@@ -32,14 +25,10 @@ class MainListFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = container?.inflate(R.layout.fragment_main)
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        repositoryListButton.setOnClickListener({ showRepositoryList() })
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val binding = FragmentMainListBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel as MainListViewModel
+        return binding.root
     }
 
-    private fun showRepositoryList() {
-        workflow.next(MainState(MainEnum.REPOSITORY))
-    }
 }

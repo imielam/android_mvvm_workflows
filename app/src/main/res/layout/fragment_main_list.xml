@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+  -->
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="mobilehexers.eu.driversweek.main.list.MainListViewModel" />
+    </data>
+
+    <LinearLayout android:id="@+id/main.container"
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  tools:context="mobilehexers.eu.driversweek.main.activity.MainActivity">
+
+        <Button
+            android:id="@+id/main_repository_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main.main.open.repository.list"
+            android:onClick="@{() -> viewModel.showRepositoryList()}"/>
+    </LinearLayout>
+</layout>
