@@ -1,4 +1,8 @@
-package mobilehexers.eu.driversweek.main
+/*
+ * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+ */
+
+package mobilehexers.eu.driversweek.main.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,20 +13,19 @@ import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.presentation.main.workflow.MainEnum
 import mobilehexers.eu.presentation.main.workflow.MainState
-import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.uibase.base.android.BaseFragment
 import mobilehexers.eu.uibase.extensions.inflate
 import javax.inject.Inject
 
-class MainFragment : BaseFragment() {
+class MainListFragment : BaseFragment() {
 
     @Inject lateinit var workflow: Workflow
 
     private val repositoryListButton by lazy { main_repository_list }
 
     companion object {
-        fun newInstance(): MainFragment {
-            val fragment = MainFragment()
+        fun newInstance(): MainListFragment {
+            val fragment = MainListFragment()
             val args = Bundle()
             fragment.arguments = args
             return fragment

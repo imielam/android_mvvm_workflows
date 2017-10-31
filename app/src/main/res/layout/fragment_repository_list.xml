@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+        tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
 
         <EditText
             android:id="@+id/repository_list_filter_text"

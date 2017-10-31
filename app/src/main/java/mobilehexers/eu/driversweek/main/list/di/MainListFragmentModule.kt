@@ -2,7 +2,7 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.driversweek.main.dependencyinjection.main
+package mobilehexers.eu.driversweek.main.list.di
 
 import dagger.Module
 import dagger.Provides
@@ -11,7 +11,7 @@ import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 
 @Module
-class MainFragmentModule {
+class MainListFragmentModule {
     @Provides
     @FragmentSingleton
     internal fun providesWorkflow(mainWorkflow: MainWorkflow): Workflow = mainWorkflow

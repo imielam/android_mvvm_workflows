@@ -9,7 +9,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:background="?selectableItemBackground"
-              tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+              tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
 
     <TextView
         android:id="@+id/repository_list_item_text"
