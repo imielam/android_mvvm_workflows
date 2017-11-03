@@ -5,7 +5,7 @@
 package mobilehexers.eu.data.base.retrofit
 
 import android.util.Log
-import mobilehexers.eu.data.extensions.logTag
+import mobilehexers.eu.domain.extensions.logTag
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

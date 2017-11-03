@@ -4,8 +4,8 @@
 
 package mobilehexers.eu.uibase.base.recycler
 
-import mobilehexers.eu.domain.base.recycler.ViewType
+import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 
 interface RecyclerViewOnItemClickListener {
-    fun onItemClick(item: ViewType)
+    fun onItemClick(item: RepositoryListItem)
 }

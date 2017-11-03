@@ -2,9 +2,12 @@
   ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
   -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
         <variable
             name="viewModel"
@@ -16,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+        tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
 
         <EditText
             android:id="@+id/repository_list_filter_text"
@@ -31,13 +34,15 @@
             android:id="@+id/repository_list_limit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/repository.list.limit.data"
-            android:onClick=""/>
+            android:text="@string/repository.list.limit.data" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/repository_list_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:items="@{viewModel.items}"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:layoutManager="@{LayoutManagers.linear()}" />
 
     </LinearLayout>
 </layout>

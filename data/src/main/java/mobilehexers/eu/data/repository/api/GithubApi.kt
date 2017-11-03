@@ -4,13 +4,13 @@
 
 package mobilehexers.eu.data.repository.api
 
-import mobilehexers.eu.data.repository.GithubRepositoryDetailsResponse
-import mobilehexers.eu.data.repository.GithubRepositoryResponse
+import mobilehexers.eu.data.repository.response.GithubRepositoryDetailsResponse
+import mobilehexers.eu.data.repository.response.GithubRepositoryResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface GithubApi {
+internal interface GithubApi {
     @GET("users/{user}/repos")
     fun getRepositoryList(@Path("user") user: String): Call<List<GithubRepositoryResponse>>
 

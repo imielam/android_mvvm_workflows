@@ -8,13 +8,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.driversweek.databinding.FragmentRepositoryDetailBinding
 import mobilehexers.eu.uibase.base.android.BaseFragment
 import javax.inject.Inject
 
 class RepositoryDetailsFragment : BaseFragment() {
 
-    @Inject lateinit var viewModel: RepositoryDetailsViewModel
+    @Inject lateinit override var viewModel: FragmentViewModel
 
     companion object {
         fun newInstance(): RepositoryDetailsFragment {
@@ -28,12 +29,7 @@ class RepositoryDetailsFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val detailBinding = FragmentRepositoryDetailBinding.inflate(inflater)
-        detailBinding.viewModel = viewModel
+        detailBinding.viewModel = viewModel as RepositoryDetailsViewModel
         return detailBinding.root
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.onViewCreated()
     }
 }

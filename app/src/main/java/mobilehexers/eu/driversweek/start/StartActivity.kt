@@ -6,12 +6,12 @@ package mobilehexers.eu.driversweek.start
 
 import android.util.Log
 import mobilehexers.eu.domain.base.workflow.State
-import mobilehexers.eu.driversweek.main.MainActivity
+import mobilehexers.eu.domain.extensions.logTag
+import mobilehexers.eu.driversweek.main.activity.MainActivity
 import mobilehexers.eu.presentation.start.workflow.StartEnum
 import mobilehexers.eu.presentation.start.workflow.StartState
 import mobilehexers.eu.presentation.start.workflow.StartWorkflow
 import mobilehexers.eu.uibase.base.android.BaseActivity
-import mobilehexers.eu.uibase.extensions.logTag
 import javax.inject.Inject
 
 class StartActivity : BaseActivity() {

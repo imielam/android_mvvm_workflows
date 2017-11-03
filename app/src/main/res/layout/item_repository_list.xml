@@ -1,23 +1,37 @@
 <!--
   ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
   -->
+<layout>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/repository_list_item_container"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:background="?selectableItemBackground"
-              tools:context="mobilehexers.eu.driversweek.repository.RepositoryActivity">
+    <data>
 
-    <TextView
-        android:id="@+id/repository_list_item_text"
-        style="@style/Base.TextAppearance.AppCompat.Body1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        tools:text="@string/main.main.open.repository.list" />
-</LinearLayout>
+        <variable
+            name="item"
+            type="mobilehexers.eu.domain.repository.list.entity.RepositoryListItem" />
+        <variable
+            name="listener"
+            type="mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener"/>
+    </data>
+
+    <LinearLayout android:id="@+id/repository_list_item_container"
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="?selectableItemBackground"
+                  android:orientation="vertical"
+                  tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
+
+        <TextView
+            android:id="@+id/repository_list_item_text"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="@{item.name}"
+            android:onClick="@{() -> listener.onItemClick(item)}"
+            android:textAlignment="center"
+            tools:text="@string/main.main.open.repository.list" />
+    </LinearLayout>
+</layout>

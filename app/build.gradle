@@ -46,6 +46,9 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
+    compile "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$tatarkaBinding_version"
+    compile "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$tatarkaBinding_version"
+
     testCompile "junit:junit:$junit_version"
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
