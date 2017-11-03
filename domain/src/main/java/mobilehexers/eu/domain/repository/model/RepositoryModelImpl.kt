@@ -21,5 +21,5 @@ class RepositoryModelImpl @Inject constructor(private val repositoryManager: Rep
 
     override fun getRepositoryDetails(): Observable<RepositoryDetailsItem> = repositoryManager.getRepositoryDetail(repositoryName = repositoryItem.name)
     override fun getRepositoryList() = repositoryManager.getRepositoryList()
-    override fun getNewRepositoryListDataSet(applicationDataSet: ApplicationDataSet): RepositoryListDataSet = RepositoryListDataSet(applicationDataSet)
+    override fun getNewRepositoryListDataSet(): RepositoryListDataSet = RepositoryListDataSet()
 }

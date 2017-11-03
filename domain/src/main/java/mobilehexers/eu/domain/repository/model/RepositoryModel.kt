@@ -14,6 +14,6 @@ interface RepositoryModel {
 
     fun getRepositoryDetails(): Observable<RepositoryDetailsItem>
     fun getRepositoryList(): Observable<List<RepositoryListItem>>
-    fun getNewRepositoryListDataSet(applicationDataSet: ApplicationDataSet): RepositoryListDataSet
+    fun getNewRepositoryListDataSet(): RepositoryListDataSet
     fun setRepositoryItemClicked(repositoryListItem: RepositoryListItem)
 }

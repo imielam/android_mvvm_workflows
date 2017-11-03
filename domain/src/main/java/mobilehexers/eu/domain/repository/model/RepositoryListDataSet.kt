@@ -4,20 +4,43 @@
 
 package mobilehexers.eu.domain.repository.model
 
-import mobilehexers.eu.domain.base.model.ApplicationDataSet
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 
-class RepositoryListDataSet(private val applicationDataSet: ApplicationDataSet) {
+class RepositoryListDataSet {
 
     private var allRepositoryItems = mutableListOf<RepositoryListItem>()
     private var filtered = false
     private var filterText = ""
     private var limited = false
-    private var limitValue: Int = allRepositoryItems.size
+    private var limitValue = allRepositoryItems.size
 
-    fun addRepositories(repositories: List<RepositoryListItem>) {
+    fun addRepositories(repositories: List<RepositoryListItem>): List<RepositoryListItem> {
         allRepositoryItems.addAll(repositories)
-        applicationDataSet.updateWith(getData())
+        return getData()
+    }
+
+    fun limitRepositoriesTo(max: Int): List<RepositoryListItem> {
+        limited = true
+        limitValue = max
+        return getData()
+    }
+
+    fun removeLimit(): List<RepositoryListItem> {
+        limited = false
+        limitValue = allRepositoryItems.size
+        return getData()
+    }
+
+    fun filterRepositories(text: String): List<RepositoryListItem> {
+        filtered = true
+        filterText = text
+        return getData()
+    }
+
+    fun removeFilter(): List<RepositoryListItem> {
+        filtered = false
+        filterText = ""
+        return getData()
     }
 
     private fun getData(): List<RepositoryListItem> {
@@ -31,33 +54,9 @@ class RepositoryListDataSet(private val applicationDataSet: ApplicationDataSet) 
         return data
     }
 
-    fun limitRepositoriesTo(max: Int) {
-        limited = true
-        limitValue = max
-        applicationDataSet.updateWith(getData())
-    }
-
-    fun removeLimit() {
-        limited = false
-        limitValue = allRepositoryItems.size
-        applicationDataSet.updateWith(getData())
-    }
-
-    fun filterRepositories(text: String) {
-        filtered = true
-        filterText = text
-        applicationDataSet.updateWith(getData())
-    }
-
-    fun removeFilter() {
-        filtered = false
-        filterText = ""
-        applicationDataSet.updateWith(getData())
-    }
-
     private fun filterData(repositoriesList: List<RepositoryListItem>, text: String): List<RepositoryListItem> = repositoriesList.filter {
         it.name.contains(text)
-    }.toMutableList()
+    }
 
     private fun limitData(repositoriesList: List<RepositoryListItem>, max: Int) = repositoriesList.subList(0, minOf(max, repositoriesList.size))
 }
