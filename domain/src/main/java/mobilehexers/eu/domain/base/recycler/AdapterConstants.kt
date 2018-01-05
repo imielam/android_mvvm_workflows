@@ -5,6 +5,6 @@
 package mobilehexers.eu.domain.base.recycler
 
 object AdapterConstants {
-    val REPOSITORY_ITEM = 1
+    val ITEM = 1
     val LOADING = 2
 }
