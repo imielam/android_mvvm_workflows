@@ -13,7 +13,7 @@ class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
         when (currentState) {
             MainEnum.INITIALIZED -> currentState = MainEnum.MAIN
             MainEnum.REPOSITORY -> currentState = MainEnum.ENDED
-            else -> println(logTag + "Unsupported state: " + currentState)
+            else -> println(logTag + ": Unsupported state: " + currentState)
         }
     }
 
@@ -23,10 +23,10 @@ class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
             when (currentState) {
             //FIXME: Check if nextStateEnum is one of type to start independent
                 MainEnum.MAIN -> currentState = nextStateEnum
-                else -> println(logTag + "Unsupported state: " + currentState)
+                else -> println(logTag + ": Unsupported state: " + currentState)
             }
         } else {
-            println(logTag + String.format("Cannot use custom state transition to %s, from %s", nextState, currentState))
+            println(logTag + String.format(": Cannot use custom state transition to %s, from %s", nextState, currentState))
         }
     }
 
@@ -34,7 +34,7 @@ class MainState(var currentState: MainEnum = MainEnum.INITIALIZED) : State {
         when (currentState) {
             MainEnum.REPOSITORY -> currentState = MainEnum.MAIN
             MainEnum.MAIN -> currentState = MainEnum.ENDED
-            else -> println(logTag + "Unsupported state: " + currentState)
+            else -> println(logTag + ": Unsupported state: " + currentState)
         }
     }
 

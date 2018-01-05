@@ -8,6 +8,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
+import mobilehexers.eu.driversweek.courses.activity.CoursesActivity
 import mobilehexers.eu.driversweek.main.list.MainListFragment
 import mobilehexers.eu.driversweek.repository.activity.RepositoryActivity
 import mobilehexers.eu.presentation.main.workflow.MainEnum
@@ -32,6 +33,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
                 MainEnum.INITIALIZED -> workflow.next()
                 MainEnum.MAIN -> switchFragment(MainListFragment.newInstance())
                 MainEnum.REPOSITORY -> switchToRepositoryScreen()
+                MainEnum.COURSES -> switchToCoursesScreen()
                 MainEnum.ENDED -> finishWorkflow()
                 else -> Log.w(logTag, "Unsupported state: " + state)
             }
@@ -42,6 +44,11 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     private fun switchToRepositoryScreen() {
         startActivity(RepositoryActivity::class)
+        workflow.end()
+    }
+
+    private fun switchToCoursesScreen() {
+        startActivity(CoursesActivity::class)
         workflow.end()
     }
 

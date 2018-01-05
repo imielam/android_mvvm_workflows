@@ -2,6 +2,7 @@
     <string name="app_name">DriversWeek</string>
 
     <string name="main.main.open.repository.list">Open Repository List Screen</string>
+    <string name="main.main.open.courses.list">Open Classes List Screen</string>
 
     <string name="repository.list.limit.data">Limit dataSet to 20 positions</string>
     <string name="repository.list.filter.data">Start writing to filter data</string>
@@ -11,4 +12,6 @@
     <string name="repository.details.entry.name">Name:</string>
     <string name="repository.details.entry.description">Description:</string>
     <string name="repository.details.entry.language">Language:</string>
+
+    <string name="courses.list.header.classes">Classes:</string>
 </resources>

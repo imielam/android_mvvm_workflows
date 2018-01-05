@@ -8,6 +8,7 @@ import android.util.Log
 import io.reactivex.Observable
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
+import mobilehexers.eu.domain.base.recycler.ViewType
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
@@ -33,8 +34,8 @@ class RepositoryListViewModel @Inject constructor(private val workflow: Workflow
 
     val itemBinding = ItemBinding.of<RepositoryListItem>(BR.item, R.layout.item_repository_list).bindExtra(BR.listener,
             object : RecyclerViewOnItemClickListener {
-                override fun onItemClick(item: RepositoryListItem) {
-                    repositoryItemClicked(item)
+                override fun onItemClick(item: ViewType) {
+                    repositoryItemClicked(item as RepositoryListItem)
                 }
             })
 

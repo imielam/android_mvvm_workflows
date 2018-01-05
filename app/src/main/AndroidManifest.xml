@@ -28,6 +28,9 @@
         <activity
             android:name=".repository.activity.RepositoryActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".courses.activity.CoursesActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

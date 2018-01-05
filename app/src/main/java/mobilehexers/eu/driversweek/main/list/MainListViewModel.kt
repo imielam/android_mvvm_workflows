@@ -21,4 +21,8 @@ class MainListViewModel @Inject constructor(private val workflow: Workflow) : Fr
     fun showRepositoryList() {
         workflow.next(MainState(MainEnum.REPOSITORY))
     }
+
+    fun showCoursesList() {
+        workflow.next(MainState(MainEnum.COURSES))
+    }
 }

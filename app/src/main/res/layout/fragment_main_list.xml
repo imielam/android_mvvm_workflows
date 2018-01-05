@@ -19,10 +19,15 @@
                   tools:context="mobilehexers.eu.driversweek.main.activity.MainActivity">
 
         <Button
-            android:id="@+id/main_repository_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/main.main.open.repository.list"
-            android:onClick="@{() -> viewModel.showRepositoryList()}"/>
+            android:onClick="@{() -> viewModel.showRepositoryList()}"
+            android:text="@string/main.main.open.repository.list" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.showCoursesList()}"
+            android:text="@string/main.main.open.courses.list" />
     </LinearLayout>
 </layout>

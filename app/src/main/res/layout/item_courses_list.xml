@@ -1,7 +1,8 @@
 <!--
   ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
   -->
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -15,14 +16,13 @@
             type="mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener" />
     </data>
 
-    <android.support.constraint.ConstraintLayout android:id="@+id/repository_list_item_container"
-                                                 xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:background="?selectableItemBackground"
-                                                 android:orientation="vertical"
-                                                 tools:context=".courses.activity.CoursesActivity">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/repository_list_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:orientation="vertical"
+        tools:context=".courses.activity.CoursesActivity">
 
         <CheckBox
             android:id="@+id/course_list_item_checkBox"
