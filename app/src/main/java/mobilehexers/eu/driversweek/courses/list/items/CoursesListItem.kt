@@ -2,11 +2,11 @@
  * Copyright (c) 2017.  All rights reserved - Maciej Imiela.
  */
 
-package mobilehexers.eu.domain.courses.list.entity
+package mobilehexers.eu.driversweek.courses.list.items
 
 import mobilehexers.eu.domain.base.recycler.AdapterConstants
 import mobilehexers.eu.domain.base.recycler.ViewType
 
-data class CoursesListItem(var name: String) : ViewType {
+data class CoursesListItem(val name: String, val description: String) : ViewType {
     override fun getViewType() = AdapterConstants.ITEM
 }

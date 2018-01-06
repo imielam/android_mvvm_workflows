@@ -9,15 +9,15 @@ import dagger.Provides
 import mobilehexers.eu.domain.base.di.FragmentSingleton
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.domain.courses.model.CoursesModel
 import mobilehexers.eu.driversweek.courses.list.CoursesListViewModel
 import mobilehexers.eu.presentation.courses.workflow.CoursesWorkflow
-import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 
 @Module
 class CoursesListFragmentsModule {
 
     @Provides
-    @FragmentSingleton internal fun providesViewModel(workflow: RepositoryWorkflow): FragmentViewModel = CoursesListViewModel(workflow)
+    @FragmentSingleton internal fun providesViewModel(workflow: CoursesWorkflow, model: CoursesModel): FragmentViewModel = CoursesListViewModel(workflow, model)
 
     @Provides
     @FragmentSingleton internal fun providesWorkflow(workflow: CoursesWorkflow): Workflow = workflow

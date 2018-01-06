@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="mobilehexers.eu.domain.courses.list.entity.CoursesListItem" />
+            type="mobilehexers.eu.driversweek.courses.list.items.CoursesListItem" />
 
         <variable
             name="listener"
@@ -58,7 +58,7 @@
             android:onClick="@{() -> listener.onItemClick(item)}"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:text="@{item.name}"
+            android:text="@{item.description}"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="@+id/course_list_item_name"
             app:layout_constraintStart_toStartOf="@+id/course_list_item_name"

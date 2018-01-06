@@ -6,22 +6,21 @@ package mobilehexers.eu.driversweek.courses.activity.di
 
 import dagger.Module
 import dagger.Provides
-import mobilehexers.eu.data.repository.api.RepositoryRestAPI
-import mobilehexers.eu.data.repository.manager.RepositoryManagerImpl
+import mobilehexers.eu.data.courses.api.CoursesRestAPI
+import mobilehexers.eu.data.courses.manager.CoursesManagerImpl
 import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
-import mobilehexers.eu.domain.repository.manager.RepositoryManager
-import mobilehexers.eu.domain.repository.model.RepositoryModel
-import mobilehexers.eu.domain.repository.model.RepositoryModelImpl
+import mobilehexers.eu.domain.courses.manager.CoursesManager
+import mobilehexers.eu.domain.courses.model.CoursesModel
 
 @Module
 class CoursesActivityModule {
 
-//    @Provides
-//    @ActivitySingleton internal fun provideRepositoryModel(repositoryManager: RepositoryManager): RepositoryModel = RepositoryModelImpl(
-//            repositoryManager)
-//
-//    @Provides
-//    @ActivitySingleton internal fun getRepositoryManager(schedulerProvider: SchedulerProvider,
-//                                                         restAPI: RepositoryRestAPI): RepositoryManager = RepositoryManagerImpl(schedulerProvider, restAPI)
+    @Provides
+    @ActivitySingleton
+    internal fun provideModel(manager: CoursesManager) = CoursesModel(manager)
+
+    @Provides
+    @ActivitySingleton internal fun getRepositoryManager(schedulerProvider: SchedulerProvider,
+                                                         restAPI: CoursesRestAPI): CoursesManager = CoursesManagerImpl(schedulerProvider, restAPI)
 }
