@@ -10,7 +10,10 @@ import dagger.Module
 import dagger.Provides
 import mobilehexers.eu.data.courses.api.CoursesRestAPI
 import mobilehexers.eu.data.repository.api.RepositoryRestAPI
+import mobilehexers.eu.domain.base.di.FragmentSingleton
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
+import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.presentation.courses.workflow.CoursesWorkflow
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import mobilehexers.eu.presentation.start.workflow.StartWorkflow
@@ -38,6 +41,9 @@ class ApplicationModule {
 
     @Provides
     @Singleton internal fun provideRepositoryWorkflow() = RepositoryWorkflow(AndroidSchedulerProvider())
+
+    @Provides
+    @Singleton internal fun providesCoursesWorkflow() = CoursesWorkflow(AndroidSchedulerProvider())
 
     @Provides
     @Singleton internal fun provideRepositoryRestAPI() = RepositoryRestAPI()

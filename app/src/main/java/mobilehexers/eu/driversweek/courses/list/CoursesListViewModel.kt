@@ -10,11 +10,14 @@ import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 import mobilehexers.eu.domain.base.recycler.ViewType
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.domain.base.workflow.Workflow
+import mobilehexers.eu.domain.courses.list.entity.CoursesListEntity
 import mobilehexers.eu.domain.courses.model.CoursesModel
 import mobilehexers.eu.domain.extensions.logTag
 import mobilehexers.eu.driversweek.BR
 import mobilehexers.eu.driversweek.R
 import mobilehexers.eu.driversweek.courses.list.items.CoursesListItem
+import mobilehexers.eu.presentation.courses.workflow.CoursesEnum
+import mobilehexers.eu.presentation.courses.workflow.CoursesState
 import mobilehexers.eu.uibase.base.recycler.RecyclerViewOnItemClickListener
 import javax.inject.Inject
 
@@ -29,16 +32,20 @@ class CoursesListViewModel @Inject constructor(private val workflow: Workflow, p
             object : RecyclerViewOnItemClickListener {
                 override fun onItemClick(item: ViewType) {
                     Log.d(logTag, "Clicked")
+                    if (item is CoursesListItem) {
+                        val state = item.selected.get()
+                        item.selected.set(!state)
+                    }
                 }
             })
 
 
     override fun onViewCreated() {
-        val map = model.getCourses().map { it.map { CoursesListItem(it.name, it.description) } }
-        addDisposable(map.subscribe({ next -> addRepositories(next) }, { e -> handleError(e) }))
+        val map = model.getCourses().map { it.map { CoursesListItem(it.id, it.name, it.description) } }
+        addDisposable(map.subscribe({ next -> addCourses(next) }, { e -> handleError(e) }))
     }
 
-    private fun addRepositories(courses: List<CoursesListItem>) {
+    private fun addCourses(courses: List<CoursesListItem>) {
         Log.v(logTag, "Add Courses: $courses")
         updateList(courses)
     }
@@ -50,5 +57,16 @@ class CoursesListViewModel @Inject constructor(private val workflow: Workflow, p
 
     private fun handleError(e: Throwable) {
         Log.e(logTag, e.localizedMessage)
+        workflow.next(CoursesState(CoursesEnum.ERROR))
+    }
+
+    fun acceptButtonClicked() {
+        val markedCourses = mutableListOf<CoursesListEntity>()
+        items.forEach { if (it.selected.get()) markedCourses.add(it.convertToEntity()) }
+        val bookingObservable = model.makeBooking(markedCourses as List<CoursesListEntity>)
+        addDisposable(bookingObservable.subscribe(
+                { _ -> workflow.next(CoursesState(CoursesEnum.SUCCESS)) },
+                { error -> handleError(error) })
+        )
     }
 }

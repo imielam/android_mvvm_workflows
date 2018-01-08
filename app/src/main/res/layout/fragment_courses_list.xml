@@ -14,43 +14,47 @@
             type="mobilehexers.eu.driversweek.courses.list.CoursesListViewModel" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/courses_list_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".courses.activity.CoursesActivity">
 
-        <LinearLayout
-            android:id="@+id/courses_list_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".courses.activity.CoursesActivity">
-
-            <TextView
-                style="@android:style/TextAppearance.DeviceDefault.Medium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="@color/colorAccent"
-                android:text="@string/courses.list.header.classes"
-                tools:text="Classes" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/courses_list_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:itemBinding="@{viewModel.itemBinding}"
-                app:items="@{viewModel.items}"
-                app:layoutManager="@{LayoutManagers.linear()}" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            style="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:padding="8dp"
+            android:text="@string/courses.list.header.classes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="0dp"
+            tools:text="Classes" />
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_done_black_24dp"
-            android:layout_margin="8dp"
-            android:background="?selectableItemBackground"
-            app:layout_anchor="@+id/courses_list_view"
-            app:layout_anchorGravity="right|bottom" />
-    </android.support.design.widget.CoordinatorLayout>
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="@{() -> viewModel.acceptButtonClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@mipmap/ic_done_black_24dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/courses_list_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
+            app:layoutManager="@{LayoutManagers.linear()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    </android.support.constraint.ConstraintLayout>
 </layout>

@@ -3,4 +3,4 @@
  */
 package mobilehexers.eu.domain.courses.list.entity
 
-data class CoursesListEntity(val name: String, val description: String)
+data class CoursesListEntity(val id: Long, val name: String, val description: String)

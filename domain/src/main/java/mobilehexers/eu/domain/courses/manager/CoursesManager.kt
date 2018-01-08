@@ -9,4 +9,5 @@ import mobilehexers.eu.domain.courses.list.entity.CoursesListEntity
 
 interface CoursesManager {
     fun getCourses(): Single<List<CoursesListEntity>>
+    fun makeBooking(list: List<CoursesListEntity>): Single<Boolean>
 }

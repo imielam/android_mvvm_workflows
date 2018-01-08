@@ -4,14 +4,16 @@
 
 package mobilehexers.eu.data.courses.api
 
-import mobilehexers.eu.data.courses.response.CoursesDetailResponse
-import mobilehexers.eu.data.repository.response.GithubRepositoryDetailsResponse
-import mobilehexers.eu.data.repository.response.GithubRepositoryResponse
+import mobilehexers.eu.data.courses.data.CoursesBookingRequest
+import mobilehexers.eu.data.courses.data.CoursesDetailResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 internal interface CoursesApi {
     @GET("classes")
     fun getClasses(): Call<List<CoursesDetailResponse>>
+
+
+    @POST("bookings")
+    fun makeBooking(@Body coursesId: CoursesBookingRequest): Call<Any>
 }

@@ -21,6 +21,7 @@ class CoursesActivityModule {
     internal fun provideModel(manager: CoursesManager) = CoursesModel(manager)
 
     @Provides
-    @ActivitySingleton internal fun getRepositoryManager(schedulerProvider: SchedulerProvider,
-                                                         restAPI: CoursesRestAPI): CoursesManager = CoursesManagerImpl(schedulerProvider, restAPI)
+    @ActivitySingleton
+    internal fun getRepositoryManager(schedulerProvider: SchedulerProvider, restAPI: CoursesRestAPI): CoursesManager =
+            CoursesManagerImpl(schedulerProvider, restAPI)
 }

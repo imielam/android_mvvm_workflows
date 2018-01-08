@@ -5,5 +5,5 @@
 package mobilehexers.eu.presentation.courses.workflow
 
 enum class CoursesEnum {
-    INITIALIZED, ENDED, LIST, ERROR
+    INITIALIZED, ENDED, LIST, SUCCESS, ERROR
 }
