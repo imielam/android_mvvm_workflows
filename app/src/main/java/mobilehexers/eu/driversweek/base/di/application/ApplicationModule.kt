@@ -5,18 +5,21 @@
 package mobilehexers.eu.driversweek.base.di.application
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import android.content.Context
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
 import dagger.Module
 import dagger.Provides
 import mobilehexers.eu.data.courses.api.CoursesRestAPI
 import mobilehexers.eu.data.repository.api.RepositoryRestAPI
-import mobilehexers.eu.domain.base.di.FragmentSingleton
+import mobilehexers.eu.data.weather.api.WeatherRestAPI
+import mobilehexers.eu.data.weather.database.WeatherDatabase
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
-import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.presentation.courses.workflow.CoursesWorkflow
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import mobilehexers.eu.presentation.start.workflow.StartWorkflow
+import mobilehexers.eu.presentation.wether.workflow.WeatherWorkflow
 import mobilehexers.eu.uibase.base.rx.AndroidSchedulerProvider
 import javax.inject.Singleton
 
@@ -28,26 +31,56 @@ import javax.inject.Singleton
 class ApplicationModule {
 
     @Provides
-    @Singleton internal fun provideContext(application: Application): Context = application
+    @Singleton
+    internal fun provideContext(application: Application): Context = application
 
     @Provides
-    @Singleton internal fun provideSchedulerProvider(): SchedulerProvider = AndroidSchedulerProvider()
+    @Singleton
+    internal fun provideSchedulerProvider(): SchedulerProvider = AndroidSchedulerProvider()
 
     @Provides
-    @Singleton internal fun provideStartWorkflow() = StartWorkflow(AndroidSchedulerProvider())
+    @Singleton
+    internal fun provideStartWorkflow(schedulerProvider: SchedulerProvider) = StartWorkflow(schedulerProvider)
 
     @Provides
-    @Singleton internal fun provideMainWorkflow() = MainWorkflow(AndroidSchedulerProvider())
+    @Singleton
+    internal fun provideMainWorkflow(schedulerProvider: SchedulerProvider) = MainWorkflow(schedulerProvider)
 
     @Provides
-    @Singleton internal fun provideRepositoryWorkflow() = RepositoryWorkflow(AndroidSchedulerProvider())
+    @Singleton
+    internal fun provideRepositoryWorkflow(schedulerProvider: SchedulerProvider) = RepositoryWorkflow(schedulerProvider)
 
     @Provides
-    @Singleton internal fun providesCoursesWorkflow() = CoursesWorkflow(AndroidSchedulerProvider())
+    @Singleton
+    internal fun providesCoursesWorkflow(schedulerProvider: SchedulerProvider) = CoursesWorkflow(schedulerProvider)
 
     @Provides
-    @Singleton internal fun provideRepositoryRestAPI() = RepositoryRestAPI()
+    @Singleton
+    internal fun providesWeatherWorkflow(schedulerProvider: SchedulerProvider) = WeatherWorkflow(schedulerProvider)
 
     @Provides
-    @Singleton internal fun provideCoursesRestAPI() = CoursesRestAPI()
+    @Singleton
+    internal fun provideRepositoryRestAPI() = RepositoryRestAPI()
+
+    @Provides
+    @Singleton
+    internal fun provideCoursesRestAPI() = CoursesRestAPI()
+
+    @Provides
+    @Singleton
+    internal fun provideWeatherRestAPI() = WeatherRestAPI()
+
+    @Provides
+    @Singleton
+    internal fun provideDB(context: Context): WeatherDatabase {
+        SQLiteAssetHelper(context, DB_NAME, null, null, 1).writableDatabase.close()
+
+        return Room.databaseBuilder(context, WeatherDatabase::class.java, DB_NAME)
+                .fallbackToDestructiveMigration().build()
+    }
+
+    private companion object {
+        const val DB_NAME = "city-database.db"
+    }
+
 }

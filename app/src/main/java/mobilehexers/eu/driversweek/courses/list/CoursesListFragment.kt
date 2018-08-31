@@ -26,7 +26,7 @@ class CoursesListFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentCoursesListBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel as CoursesListViewModel
         return binding.root

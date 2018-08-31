@@ -29,5 +29,11 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.showCoursesList()}"
             android:text="@string/main.main.open.courses.list" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.showWeatherList()}"
+            android:text="@string/main.main.open.wether.list" />
     </LinearLayout>
 </layout>

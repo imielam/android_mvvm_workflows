@@ -1,8 +1,12 @@
 <resources>
+    <string name="empty" />
     <string name="app_name">DriversWeek</string>
+
+    <string name="loading.entry.message">Initializing database</string>
 
     <string name="main.main.open.repository.list">Open Repository List Screen</string>
     <string name="main.main.open.courses.list">Open Classes List Screen</string>
+    <string name="main.main.open.wether.list">Open Weather List Screen</string>
 
     <string name="repository.list.limit.data">Limit dataSet to 20 positions</string>
     <string name="repository.list.filter.data">Start writing to filter data</string>
@@ -19,4 +23,16 @@
     <string name="courses.list.dialog.error.header">Error</string>
     <string name="courses.list.dialog.error.message">Unexpected network error have happened.</string>
     <string name="courses.list.dialog.ok">OK</string>
+
+    <string name="weather.list.filter.data">Start writing to filter data</string>
+
+    <string name="weather.details.entry.message">Weather details</string>
+    <string name="weather.details.entry.name">City:</string>
+    <string name="weather.details.entry.temperature">Temperature (°F):</string>
+    <string name="weather.details.entry.wind">Wind Speed (m/s):</string>
+    <string name="weather.details.entry.cloudiness">Cloudiness:</string>
+    <string name="weather.details.entry.pressure">Pressure (hpa):</string>
+    <string name="weather.details.entry.humidity">Humidity (%):</string>
+    <string name="weather.details.cached.data">No internet connection, cached date displayed!</string>
+    <string name="weather.details.cached.data.no">No internet connection, no cached date!</string>
 </resources>

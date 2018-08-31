@@ -13,12 +13,13 @@ class StartState : State {
 
     override fun next() {
         when (currentState) {
-            StartEnum.INITIALIZED -> currentState = StartEnum.ENDED
+            StartEnum.INITIALIZED -> currentState = StartEnum.WORKING
+            StartEnum.WORKING -> currentState = StartEnum.ENDED
             else -> println(logTag + "Unsupported state: " + currentState)
         }
     }
 
-    override fun next(state: State) {
+    override fun next(nextState: State) {
         next()
     }
 

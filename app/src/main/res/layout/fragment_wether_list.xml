@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2018.  All rights reserved - Maciej Imiela.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/weather_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        tools:context="mobilehexers.eu.driversweek.weather.activity.WeatherActivity">
+
+        <EditText
+            android:id="@+id/weather_list_filter_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/weather.list.filter.data"
+            android:inputType="text" />
+
+        <FrameLayout
+            android:id="@+id/weather_list_loading_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/weather_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</layout>

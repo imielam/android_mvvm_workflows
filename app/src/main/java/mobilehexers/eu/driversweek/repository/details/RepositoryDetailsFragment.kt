@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.driversweek.databinding.FragmentRepositoryDetailBinding
+import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsFragment
+import mobilehexers.eu.driversweek.repository.details.RepositoryDetailsViewModel
 import mobilehexers.eu.uibase.base.android.BaseFragment
 import javax.inject.Inject
 
@@ -26,7 +28,7 @@ class RepositoryDetailsFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val detailBinding = FragmentRepositoryDetailBinding.inflate(inflater)
         detailBinding.viewModel = viewModel as RepositoryDetailsViewModel
