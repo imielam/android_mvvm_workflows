@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="mobilehexers.eu.driversweek.start.loading.LoadingViewModel" />
+            type="mobilehexers.eu.demo.start.loading.LoadingViewModel" />
     </data>
 
     <LinearLayout

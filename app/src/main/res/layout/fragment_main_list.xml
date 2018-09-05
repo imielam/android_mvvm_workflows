@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="mobilehexers.eu.driversweek.main.list.MainListViewModel" />
+            type="mobilehexers.eu.demo.main.list.MainListViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="mobilehexers.eu.driversweek.main.activity.MainActivity">
+        tools:context="mobilehexers.eu.demo.main.activity.MainActivity">
 
         <Button
             android:layout_width="match_parent"
