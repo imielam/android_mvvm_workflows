@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="mobilehexers.eu.driversweek.repository.list.RepositoryListViewModel" />
+            type="mobilehexers.eu.demo.repository.list.RepositoryListViewModel" />
     </data>
 
     <LinearLayout
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
+        tools:context="mobilehexers.eu.demo.repository.activity.RepositoryActivity">
 
         <EditText
             android:id="@+id/repository_list_filter_text"

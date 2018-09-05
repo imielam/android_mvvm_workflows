@@ -8,7 +8,6 @@ import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import mobilehexers.eu.data.repository.api.RepositoryRestAPI
 import mobilehexers.eu.data.repository.response.GithubRepositoryDetailsResponse
-import mobilehexers.eu.domain.base.di.ActivitySingleton
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
 import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem

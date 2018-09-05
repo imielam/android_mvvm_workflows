@@ -20,7 +20,7 @@
                   android:layout_height="wrap_content"
                   android:background="?selectableItemBackground"
                   android:orientation="vertical"
-                  tools:context="mobilehexers.eu.driversweek.repository.activity.RepositoryActivity">
+                  tools:context="mobilehexers.eu.demo.repository.activity.RepositoryActivity">
 
         <TextView
             android:id="@+id/repository_list_item_text"

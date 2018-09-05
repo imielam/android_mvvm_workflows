@@ -5,5 +5,5 @@
 package mobilehexers.eu.presentation.start.workflow
 
 enum class StartEnum {
-    INITIALIZED, ENDED
+    INITIALIZED, WORKING, ENDED
 }

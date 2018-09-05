@@ -5,7 +5,6 @@
 package mobilehexers.eu.domain.repository.model
 
 import io.reactivex.Observable
-import mobilehexers.eu.domain.base.model.ApplicationDataSet
 import mobilehexers.eu.domain.repository.details.entity.RepositoryDetailsItem
 import mobilehexers.eu.domain.repository.list.entity.RepositoryListItem
 import mobilehexers.eu.domain.repository.model.RepositoryListDataSet

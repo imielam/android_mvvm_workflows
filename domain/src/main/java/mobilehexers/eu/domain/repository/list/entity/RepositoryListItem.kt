@@ -8,5 +8,5 @@ import mobilehexers.eu.domain.base.recycler.AdapterConstants
 import mobilehexers.eu.domain.base.recycler.ViewType
 
 data class RepositoryListItem(var name: String) : ViewType {
-    override fun getViewType() = AdapterConstants.REPOSITORY_ITEM
+    override fun getViewType() = AdapterConstants.ITEM
 }
