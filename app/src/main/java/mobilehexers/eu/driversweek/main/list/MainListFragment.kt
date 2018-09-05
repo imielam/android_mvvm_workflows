@@ -25,7 +25,7 @@ class MainListFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentMainListBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel as MainListViewModel
         return binding.root

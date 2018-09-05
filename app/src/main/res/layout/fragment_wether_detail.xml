@@ -1,0 +1,211 @@
+<!--
+  ~ Copyright (c) 2017.  All rights reserved - Maciej Imiela.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="mobilehexers.eu.driversweek.weather.details.WeatherDetailsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/weather_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="mobilehexers.eu.driversweek.weather.activity.WeatherActivity">
+
+        <TextView
+            android:id="@+id/weather_details_text"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/weather.details.entry.message"
+            android:textAlignment="center" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:visibility="@{viewModel.progressVisibility}"
+            tools:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.errorMessageId}"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="@{viewModel.errorMessageVisibility}"
+            tools:text="@string/weather.details.cached.data"
+            tools:visibility="visible" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/weather_details_item_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="@{viewModel.detailsVisibility}">
+
+            <TextView
+                android:id="@+id/weather_details_name_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.name"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/weather_details_temperature_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/weather_details_name_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.cityName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_name_label"
+                tools:text="Cairns" />
+
+            <TextView
+                android:id="@+id/weather_details_temperature_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.temperature"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/weather_details_cloudiness_label"
+                app:layout_constraintStart_toStartOf="@+id/weather_details_name_label"
+                app:layout_constraintTop_toBottomOf="@+id/weather_details_name_label" />
+
+            <TextView
+                android:id="@+id/weather_details_temperature_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.temperature}"
+                app:layout_constraintEnd_toEndOf="@+id/weather_details_name_text"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_temperature_label"
+                app:layout_constraintTop_toTopOf="@+id/weather_details_temperature_label"
+                tools:text="300.15" />
+
+            <TextView
+                android:id="@+id/weather_details_cloudiness_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.cloudiness"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/weather_details_wind_label"
+                app:layout_constraintStart_toStartOf="@+id/weather_details_temperature_label"
+                app:layout_constraintTop_toBottomOf="@+id/weather_details_temperature_label" />
+
+            <TextView
+                android:id="@+id/weather_details_cloudiness_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.cloudiness}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="@+id/weather_details_temperature_text"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_cloudiness_label"
+                app:layout_constraintTop_toTopOf="@+id/weather_details_cloudiness_label"
+                tools:text="Type-safe HTTP " />
+
+            <TextView
+                android:id="@+id/weather_details_wind_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.wind"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/weather_details_pressure_label"
+                app:layout_constraintStart_toStartOf="@+id/weather_details_cloudiness_label"
+                app:layout_constraintTop_toBottomOf="@+id/weather_details_cloudiness_label" />
+
+            <TextView
+                android:id="@+id/weather_details_wind_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.windSpeed}"
+                app:layout_constraintEnd_toEndOf="@+id/weather_details_cloudiness_text"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_wind_label"
+                app:layout_constraintTop_toTopOf="@+id/weather_details_wind_label"
+                tools:text="scattered clouds" />
+
+            <TextView
+                android:id="@+id/weather_details_pressure_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.pressure"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/weather_details_humidity_label"
+                app:layout_constraintStart_toStartOf="@+id/weather_details_wind_label"
+                app:layout_constraintTop_toBottomOf="@+id/weather_details_wind_label" />
+
+            <TextView
+                android:id="@+id/weather_details_pressure_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.pressure}"
+                app:layout_constraintEnd_toEndOf="@+id/weather_details_wind_text"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_pressure_label"
+                app:layout_constraintTop_toTopOf="@+id/weather_details_pressure_label"
+                tools:text="1007" />
+
+            <TextView
+                android:id="@+id/weather_details_humidity_label"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/weather.details.entry.humidity"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/weather_details_pressure_label"
+                app:layout_constraintTop_toBottomOf="@+id/weather_details_pressure_label" />
+
+            <TextView
+                android:id="@+id/weather_details_humidity_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.details.humidity}"
+                app:layout_constraintEnd_toEndOf="@+id/weather_details_pressure_text"
+                app:layout_constraintStart_toEndOf="@+id/weather_details_humidity_label"
+                app:layout_constraintTop_toTopOf="@+id/weather_details_humidity_label"
+                tools:text="74" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

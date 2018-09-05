@@ -6,6 +6,7 @@ package mobilehexers.eu.data.repository.api
 
 import mobilehexers.eu.data.repository.response.GithubRepositoryDetailsResponse
 import mobilehexers.eu.data.repository.response.GithubRepositoryResponse
+import mobilehexers.eu.data.repository.api.GithubApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

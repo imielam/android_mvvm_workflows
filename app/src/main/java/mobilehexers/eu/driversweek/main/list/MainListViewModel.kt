@@ -25,4 +25,8 @@ class MainListViewModel @Inject constructor(private val workflow: Workflow) : Fr
     fun showCoursesList() {
         workflow.next(MainState(MainEnum.COURSES))
     }
+
+    fun showWeatherList() {
+        workflow.next(MainState(MainEnum.WEATHER))
+    }
 }

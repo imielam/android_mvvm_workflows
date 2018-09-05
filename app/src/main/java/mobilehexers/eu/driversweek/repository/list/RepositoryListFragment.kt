@@ -13,7 +13,6 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_filter_text
 import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_limit
-import kotlinx.android.synthetic.main.fragment_repository_list.repository_list_view
 import mobilehexers.eu.domain.base.viewmodel.FragmentViewModel
 import mobilehexers.eu.driversweek.databinding.FragmentRepositoryListBinding
 import mobilehexers.eu.uibase.base.android.BaseFragment
@@ -35,13 +34,13 @@ class RepositoryListFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentRepositoryListBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel as RepositoryListViewModel
         return binding.root
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViewModel()
         super.onViewCreated(view, savedInstanceState)
     }
