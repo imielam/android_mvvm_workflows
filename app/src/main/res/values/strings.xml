@@ -17,13 +17,6 @@
     <string name="repository.details.entry.description">Description:</string>
     <string name="repository.details.entry.language">Language:</string>
 
-    <string name="courses.list.header.classes">Classes:</string>
-    <string name="courses.list.dialog.success.header">Success</string>
-    <string name="courses.list.dialog.success.message">Your reservation was sent!</string>
-    <string name="courses.list.dialog.error.header">Error</string>
-    <string name="courses.list.dialog.error.message">Unexpected network error have happened.</string>
-    <string name="courses.list.dialog.ok">OK</string>
-
     <string name="weather.list.filter.data">Start writing to filter data</string>
 
     <string name="weather.details.entry.message">Weather details</string>

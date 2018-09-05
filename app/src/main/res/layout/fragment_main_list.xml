@@ -10,25 +10,19 @@
             type="mobilehexers.eu.driversweek.main.list.MainListViewModel" />
     </data>
 
-    <LinearLayout android:id="@+id/main.container"
-                  xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  tools:context="mobilehexers.eu.driversweek.main.activity.MainActivity">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main.container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="mobilehexers.eu.driversweek.main.activity.MainActivity">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.showRepositoryList()}"
             android:text="@string/main.main.open.repository.list" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.showCoursesList()}"
-            android:text="@string/main.main.open.courses.list" />
 
         <Button
             android:layout_width="match_parent"

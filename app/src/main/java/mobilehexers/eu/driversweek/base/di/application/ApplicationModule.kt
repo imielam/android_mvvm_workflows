@@ -10,12 +10,10 @@ import android.content.Context
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
 import dagger.Module
 import dagger.Provides
-import mobilehexers.eu.data.courses.api.CoursesRestAPI
 import mobilehexers.eu.data.repository.api.RepositoryRestAPI
 import mobilehexers.eu.data.weather.api.WeatherRestAPI
 import mobilehexers.eu.data.weather.database.WeatherDatabase
 import mobilehexers.eu.domain.base.rx.SchedulerProvider
-import mobilehexers.eu.presentation.courses.workflow.CoursesWorkflow
 import mobilehexers.eu.presentation.main.workflow.MainWorkflow
 import mobilehexers.eu.presentation.repository.workflow.RepositoryWorkflow
 import mobilehexers.eu.presentation.start.workflow.StartWorkflow
@@ -52,19 +50,11 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    internal fun providesCoursesWorkflow(schedulerProvider: SchedulerProvider) = CoursesWorkflow(schedulerProvider)
-
-    @Provides
-    @Singleton
     internal fun providesWeatherWorkflow(schedulerProvider: SchedulerProvider) = WeatherWorkflow(schedulerProvider)
 
     @Provides
     @Singleton
     internal fun provideRepositoryRestAPI() = RepositoryRestAPI()
-
-    @Provides
-    @Singleton
-    internal fun provideCoursesRestAPI() = CoursesRestAPI()
 
     @Provides
     @Singleton

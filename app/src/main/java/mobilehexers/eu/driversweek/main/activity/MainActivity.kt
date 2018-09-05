@@ -8,7 +8,6 @@ import dagger.android.support.HasSupportFragmentInjector
 import mobilehexers.eu.domain.base.workflow.State
 import mobilehexers.eu.domain.base.workflow.Workflow
 import mobilehexers.eu.domain.extensions.logTag
-import mobilehexers.eu.driversweek.courses.activity.CoursesActivity
 import mobilehexers.eu.driversweek.main.list.MainListFragment
 import mobilehexers.eu.driversweek.repository.activity.RepositoryActivity
 import mobilehexers.eu.driversweek.weather.activity.WeatherActivity
@@ -20,8 +19,10 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
-    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Inject lateinit var workflow: MainWorkflow
+    @Inject
+    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var workflow: MainWorkflow
 
     override fun getWorkflowInstance(): Workflow = workflow
 
@@ -34,7 +35,6 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
                 MainEnum.INITIALIZED -> workflow.next()
                 MainEnum.MAIN -> switchFragment(MainListFragment.newInstance())
                 MainEnum.REPOSITORY -> switchToRepositoryScreen()
-                MainEnum.COURSES -> switchToCoursesScreen()
                 MainEnum.WEATHER -> switchToWeatherScreen()
                 MainEnum.ENDED -> finishWorkflow()
                 else -> Log.w(logTag, "Unsupported state: " + state)
@@ -46,11 +46,6 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     private fun switchToRepositoryScreen() {
         startActivity(RepositoryActivity::class)
-        workflow.end()
-    }
-
-    private fun switchToCoursesScreen() {
-        startActivity(CoursesActivity::class)
         workflow.end()
     }
 

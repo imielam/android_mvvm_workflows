@@ -7,9 +7,6 @@ package mobilehexers.eu.driversweek.base.di.application
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import mobilehexers.eu.domain.base.di.ActivitySingleton
-import mobilehexers.eu.driversweek.courses.activity.CoursesActivity
-import mobilehexers.eu.driversweek.courses.activity.di.CoursesActivityModule
-import mobilehexers.eu.driversweek.courses.activity.di.CoursesFragmentsProvider
 import mobilehexers.eu.driversweek.main.activity.MainActivity
 import mobilehexers.eu.driversweek.main.activity.di.MainActivityModule
 import mobilehexers.eu.driversweek.main.activity.di.MainFragmentProvider
@@ -37,10 +34,6 @@ abstract class ActivityBuilderModule {
     @ActivitySingleton
     @ContributesAndroidInjector(modules = [RepositoryFragmentsProvider::class, RepositoryActivityModule::class])
     internal abstract fun bindRepositoryActivityInjector(): RepositoryActivity
-
-    @ActivitySingleton
-    @ContributesAndroidInjector(modules = [CoursesFragmentsProvider::class, CoursesActivityModule::class])
-    internal abstract fun bindCourseActivityInjector(): CoursesActivity
 
     @ActivitySingleton
     @ContributesAndroidInjector(modules = [WetherFragmentsProvider::class, WetherActivityModule::class])
